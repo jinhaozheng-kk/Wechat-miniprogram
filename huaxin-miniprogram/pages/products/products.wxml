@@ -1,0 +1,69 @@
+<view class="page-container">
+
+  <!-- 搜索框（顶部 sticky） -->
+  <view class="search-wrap">
+    <view class="search-bar">
+      <text class="search-icon">🔍</text>
+      <input
+        class="search-input"
+        placeholder="搜索产品名称或规格"
+        placeholder-class="search-placeholder"
+        value="{{searchQuery}}"
+        bindinput="onSearchInput"
+        confirm-type="search"
+      />
+      <view class="search-clear" wx:if="{{searchQuery}}" bindtap="clearSearch">✕</view>
+    </view>
+  </view>
+
+  <!-- 搜索结果 -->
+  <block wx:if="{{isSearching}}">
+    <view class="section-title">搜索结果 ({{searchResults.length}})</view>
+    <view wx:if="{{searchResults.length === 0}}" class="empty-state">
+      <text class="empty-icon">🔍</text>
+      <text class="empty-text">未找到相关产品</text>
+      <view class="empty-cta" bindtap="clearSearch">清空搜索 ›</view>
+    </view>
+    <block wx:else>
+      <view
+        wx:for="{{searchResults}}"
+        wx:key="id"
+        class="result-item card"
+        bindtap="goToDetail"
+        data-id="{{item.id}}"
+      >
+        <view class="result-name">{{item.name}}</view>
+        <view class="result-model">{{item.model}}</view>
+        <view class="result-tags">
+          <text wx:for="{{item.tags}}" wx:key="*this" wx:for-item="tag" class="tag">{{tag}}</text>
+        </view>
+      </view>
+    </block>
+  </block>
+
+  <!-- 分类列表 -->
+  <block wx:else>
+    <view class="section-title">全部分类（{{categories.length}}个系列）</view>
+    <view
+      wx:for="{{categories}}"
+      wx:key="id"
+      class="cat-row card"
+      bindtap="goToCategory"
+      data-id="{{item.id}}"
+    >
+      <view class="cat-icon-wrap" style="background:{{item.bgColor}}">
+        <text class="cat-icon" style="color:{{item.color}}">{{item.icon}}</text>
+      </view>
+      <view class="cat-info">
+        <view class="cat-name">{{item.name}}</view>
+        <view class="cat-desc">{{item.description}}</view>
+      </view>
+      <view class="cat-meta">
+        <text class="cat-count" wx:if="{{item.productCount > 0}}">{{item.productCount}}款</text>
+        <text class="cat-count preparing" wx:else>规格整理中</text>
+        <text class="cat-arrow">›</text>
+      </view>
+    </view>
+  </block>
+
+</view>

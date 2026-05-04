@@ -1,0 +1,25 @@
+# 操作系统
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# IDE / 编辑器
+.idea/
+*.iml
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Claude Code 本地权限配置（个人化，不应跟踪）
+.claude/settings.local.json
+**/.claude/settings.local.json
+
+# Spring profile-local 配置（用于本地放真实凭据）
+application-local.yml
+application-local.yaml
+application-local.properties
+
+# 构建输出兜底（client/ 与 server/ 子目录已有各自的 .gitignore，这里再加一层）
+target/
+dist/
+node_modules/

@@ -1,0 +1,57 @@
+<view class="page-container" wx:if="{{product}}">
+
+  <!-- 产品图片轮播 -->
+  <swiper
+    wx:if="{{product.images && product.images.length}}"
+    class="img-swiper"
+    indicator-dots="{{product.images.length > 1}}"
+    indicator-color="rgba(255,255,255,0.5)"
+    indicator-active-color="#ffffff"
+    autoplay circular
+    interval="3000"
+  >
+    <swiper-item wx:for="{{product.images}}" wx:key="index">
+      <image src="{{item}}" mode="aspectFit" class="swiper-img" lazy-load />
+    </swiper-item>
+  </swiper>
+  <!-- 无图时占位 -->
+  <view wx:else class="product-hero" style="background:{{category.bgColor}}">
+    <text class="hero-icon" style="color:{{category.color}}">{{category.icon}}</text>
+  </view>
+
+  <!-- 产品基本信息 -->
+  <view class="info-card card">
+    <view class="product-title">{{product.name}}</view>
+    <view class="product-model-row">
+      <text class="product-model-label">型号/规格：</text>
+      <text class="product-model-value">{{product.model}}</text>
+    </view>
+    <!-- 标签 -->
+    <view class="tags-row">
+      <text wx:for="{{product.tags}}" wx:key="*this" wx:for-item="tag" class="tag">{{tag}}</text>
+    </view>
+  </view>
+
+  <!-- 规格参数 -->
+  <view class="section-title">规格参数</view>
+  <view class="specs-card card">
+    <view wx:for="{{product.specs}}" wx:key="key" class="spec-row">
+      <text class="spec-key">{{item.key}}</text>
+      <text class="spec-value">{{item.value}}</text>
+    </view>
+  </view>
+
+  <!-- 说明 -->
+  <view class="note-bar">
+    <text class="note-text">· 以上规格如有变动，以实物为准  · 价格请致电咨询</text>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="action-bar">
+    <view class="btn-inquiry" bindtap="goToInquiry">
+      <text class="inquiry-phone-icon">☎</text>
+      <text>立即询价</text>
+    </view>
+  </view>
+
+</view>

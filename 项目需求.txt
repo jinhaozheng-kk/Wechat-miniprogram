@@ -1,0 +1,2 @@
+我想要做一个小程序，能实现展示华信通讯科技有限公司各种产品各种型号，页面美观
+我需要做一个后端Springboot4，在server目录，前端用Vue3+element plus，在client目录，小程序目录是huaxin-miniprogram

@@ -1,0 +1,157 @@
+/* =========================================================
+   产品详情页样式
+   ========================================================= */
+.page-container { padding-bottom: 160rpx; }
+
+/* 产品图片轮播 */
+.img-swiper {
+  width: 100%;
+  height: 560rpx;
+  background: linear-gradient(180deg, #F0F4FA 0%, #E8F2FE 100%);
+}
+.swiper-img {
+  width: 100%;
+  height: 560rpx;
+}
+
+/* 无图占位（渐变背景 + 大字水印） */
+.product-hero {
+  position: relative;
+  width: 100%;
+  height: 480rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.product-hero::before,
+.product-hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.45);
+}
+.product-hero::before {
+  width: 280rpx;
+  height: 280rpx;
+  top: -80rpx;
+  left: -80rpx;
+}
+.product-hero::after {
+  width: 220rpx;
+  height: 220rpx;
+  bottom: -60rpx;
+  right: -60rpx;
+}
+.hero-icon {
+  font-size: 140rpx;
+  font-weight: 800;
+  opacity: 0.55;
+  z-index: 1;
+  text-shadow: 0 4rpx 12rpx rgba(0,0,0,0.06);
+}
+
+/* 基本信息卡 */
+.info-card { margin: 16rpx 24rpx; }
+.product-title {
+  font-size: 36rpx;
+  font-weight: 800;
+  color: #1A2233;
+  line-height: 1.4;
+  margin-bottom: 18rpx;
+  letter-spacing: 0.5rpx;
+}
+.product-model-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 18rpx;
+  padding: 14rpx 18rpx;
+  background: #F0F4FA;
+  border-radius: 12rpx;
+}
+.product-model-label {
+  font-size: 24rpx;
+  color: #5B6B7E;
+  flex-shrink: 0;
+  margin-right: 8rpx;
+}
+.product-model-value {
+  font-size: 26rpx;
+  color: #1A2233;
+  font-weight: 600;
+}
+.tags-row { display: flex; flex-wrap: wrap; }
+
+/* 规格参数（奇偶斑马纹） */
+.specs-card {
+  margin: 0 24rpx;
+  padding: 12rpx 0;
+}
+.spec-row {
+  display: flex;
+  padding: 22rpx 32rpx;
+  border-bottom: 1rpx solid #F0F4FA;
+}
+.spec-row:nth-child(even) {
+  background: #FAFBFD;
+}
+.spec-row:last-child { border-bottom: none; }
+.spec-key {
+  width: 200rpx;
+  font-size: 26rpx;
+  color: #5B6B7E;
+  flex-shrink: 0;
+}
+.spec-value {
+  flex: 1;
+  font-size: 26rpx;
+  color: #1A2233;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+/* 说明条 */
+.note-bar {
+  padding: 22rpx 28rpx;
+  background: linear-gradient(135deg, #FFF8E1 0%, #FFFDE7 100%);
+  margin: 20rpx 24rpx;
+  border-radius: 16rpx;
+  border-left: 6rpx solid #FFB300;
+}
+.note-text { font-size: 22rpx; color: #B26A00; line-height: 1.7; }
+
+/* 底部操作栏（"立即询价"整行渐变 + 大阴影） */
+.action-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 18rpx 24rpx 28rpx;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(12rpx);
+  border-top: 1rpx solid #ECEFF4;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 -6rpx 24rpx rgba(20, 50, 100, 0.06);
+}
+.btn-inquiry {
+  flex: 1;
+  height: 92rpx;
+  background: linear-gradient(135deg, #1565C0 0%, #1976D2 100%);
+  color: #fff;
+  border-radius: 999rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  font-weight: 700;
+  letter-spacing: 2rpx;
+  box-shadow: 0 6rpx 18rpx rgba(21, 101, 192, 0.35);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.btn-inquiry:active {
+  transform: scale(0.98);
+  box-shadow: 0 3rpx 10rpx rgba(21, 101, 192, 0.30);
+}
+.inquiry-phone-icon { font-size: 32rpx; margin-right: 10rpx; }

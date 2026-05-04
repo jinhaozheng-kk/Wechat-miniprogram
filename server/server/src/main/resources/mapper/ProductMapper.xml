@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.ProductMapper">
+
+    <resultMap id="ProductMap" type="com.example.entity.Product">
+        <id     property="id"          column="id"/>
+        <result property="categoryId"  column="category_id"/>
+        <result property="name"        column="name"/>
+        <result property="model"       column="model"/>
+        <!-- JSON 字段交给自定义 TypeHandler 处理 -->
+        <result property="images"      column="images" typeHandler="com.example.typehandler.JsonListTypeHandler"/>
+        <result property="specs"       column="specs"  typeHandler="com.example.typehandler.JsonListTypeHandler"/>
+        <result property="tags"        column="tags"   typeHandler="com.example.typehandler.JsonListTypeHandler"/>
+        <result property="description" column="description"/>
+        <result property="createdAt"   column="created_at"/>
+        <result property="updatedAt"   column="updated_at"/>
+    </resultMap>
+
+    <sql id="Cols">
+        id, category_id, name, model, images, specs, tags, description,
+        created_at, updated_at
+    </sql>
+
+    <select id="findList" resultMap="ProductMap">
+        SELECT <include refid="Cols"/>
+        FROM product
+        <where>
+            <if test="categoryId != null and categoryId != ''">
+                AND category_id = #{categoryId}
+            </if>
+            <if test="keyword != null and keyword != ''">
+                AND (name LIKE CONCAT('%', #{keyword}, '%')
+                     OR model LIKE CONCAT('%', #{keyword}, '%'))
+            </if>
+        </where>
+        ORDER BY category_id ASC, id ASC
+    </select>
+
+    <select id="findById" resultMap="ProductMap">
+        SELECT <include refid="Cols"/>
+        FROM product
+        WHERE id = #{id}
+    </select>
+
+    <select id="count" resultType="long">
+        SELECT COUNT(*) FROM product
+    </select>
+
+    <!-- 按分类聚合，结果列名 categoryId / count -->
+    <select id="countGroupByCategory" resultType="java.util.Map">
+        SELECT category_id AS categoryId, COUNT(*) AS count
+        FROM product
+        GROUP BY category_id
+    </select>
+
+</mapper>

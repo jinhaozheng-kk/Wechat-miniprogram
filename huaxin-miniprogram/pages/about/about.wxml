@@ -1,0 +1,85 @@
+<view class="page-container">
+
+  <!-- 公司头部 -->
+  <view class="company-header">
+    <view class="company-logo-wrap">
+      <text class="company-logo-text">华信</text>
+    </view>
+    <view class="company-name">{{company.name}}</view>
+    <view class="company-slogan">{{company.slogan}}</view>
+    <view class="company-header-bottom"></view>
+  </view>
+
+  <!-- 公司简介 -->
+  <view class="section-title">公司简介</view>
+  <view class="intro-card card">
+    <text class="intro-text">{{company.intro}}</text>
+  </view>
+
+  <!-- 核心优势 -->
+  <view class="section-title">核心优势</view>
+  <view class="advantages-grid">
+    <view wx:for="{{advantages}}" wx:key="title" class="adv-item card">
+      <view class="adv-icon">{{item.icon}}</view>
+      <text class="adv-title">{{item.title}}</text>
+      <text class="adv-desc">{{item.desc}}</text>
+    </view>
+  </view>
+
+  <!-- 资质证书 -->
+  <view class="section-title">资质证书</view>
+  <view class="cert-card card">
+    <view wx:for="{{company.certifications}}" wx:key="*this" class="cert-item">
+      <view class="cert-check">✓</view>
+      <text class="cert-name">{{item}}</text>
+    </view>
+    <view class="cert-note">如需查验，欢迎来电索取复印件</view>
+  </view>
+
+  <!-- 联系方式 -->
+  <view class="section-title">联系方式</view>
+  <view class="contact-card card">
+    <view class="contact-row" bindtap="callPhone">
+      <view class="contact-icon-wrap">
+        <text class="contact-icon">☎</text>
+      </view>
+      <view class="contact-info">
+        <text class="contact-label">联系电话</text>
+        <text class="contact-value phone-blue">{{company.phone}}</text>
+      </view>
+      <text class="contact-action">拨打</text>
+    </view>
+    <view class="contact-divider"></view>
+    <view class="contact-row" bindtap="copyAddress">
+      <view class="contact-icon-wrap">
+        <text class="contact-icon">📍</text>
+      </view>
+      <view class="contact-info">
+        <text class="contact-label">公司地址</text>
+        <text class="contact-value">{{company.address}}</text>
+      </view>
+      <text class="contact-action">复制</text>
+    </view>
+    <view wx:if="{{company.email}}" class="contact-divider"></view>
+    <view wx:if="{{company.email}}" class="contact-row">
+      <view class="contact-icon-wrap">
+        <text class="contact-icon">✉</text>
+      </view>
+      <view class="contact-info">
+        <text class="contact-label">电子邮件</text>
+        <text class="contact-value">{{company.email}}</text>
+      </view>
+    </view>
+    <view class="contact-divider"></view>
+    <view class="contact-row">
+      <view class="contact-icon-wrap">
+        <text class="contact-icon">🕐</text>
+      </view>
+      <view class="contact-info">
+        <text class="contact-label">工作时间</text>
+        <text class="contact-value">{{company.workingHours}}</text>
+      </view>
+    </view>
+  </view>
+
+</view>

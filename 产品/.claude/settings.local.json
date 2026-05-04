@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\17798\\\\Desktop\\\\产品\" -Force | Select-Object -Property Name, @{N='Type';E={if\\($_.PSIsContainer\\){'Directory'}else{'File'}}} | Sort-Object Name | Format-Table)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\17798\\\\Desktop\\\\产品\\\\.claude\" -Force -Recurse | Select-Object -Property Name, @{N='Type';E={if\\($_.PSIsContainer\\){'Directory'}else{'File'}}} | Sort-Object Name | Format-Table)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\17798\\\\Desktop\\\\产品\\\\pz30回路箱\" -Force | Select-Object -Property Name, @{N='Type';E={if\\($_.PSIsContainer\\){'Directory'}else{'File'}}} | Sort-Object Name | Format-Table)",
+      "PowerShell(Get-ChildItem *)",
+      "PowerShell(Head *)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\17798\\\\Desktop\\\\产品\\\\电话箱\" -File | Select-Object Name, @{N='Size\\(KB\\)';E={[math]::Round\\($_.Length/1KB,2\\)}} -First 20 | Format-Table)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\17798\\\\Desktop\\\\产品\\\\不锈钢家庭信息箱\" -File | Select-Object Name, @{N='Size\\(KB\\)';E={[math]::Round\\($_.Length/1KB,2\\)}} | Format-Table)",
+      "PowerShell(\\(Get-ChildItem -Path \"C:\\\\Users\\\\17798\\\\Desktop\\\\产品\\\\电话箱\" -File | Measure-Object -Property Length -Sum\\).Sum / 1MB)",
+      "PowerShell(\\(Get-ChildItem -Path \"C:\\\\Users\\\\17798\\\\Desktop\\\\产品\" -File -Recurse | Measure-Object -Property Length -Sum\\).Sum / 1MB)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\17798\\\\Desktop\\\\产品\" -File | Format-Table -Property Name, @{N='Size\\(KB\\)';E={[math]::Round\\($_.Length/1KB,2\\)}})",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\17798\\\\Desktop\\\\产品\" -Directory)",
+      "Bash(Select-Object Name)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\17798\\\\Desktop\" -Directory)",
+      "Bash(Select-Object Name, FullName)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\17798\\\\Desktop\" | Where-Object { $_.PSIsContainer } | ForEach-Object { $_.Name })",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\17798\\\\Desktop\\\\产品\" -Recurse | Select-Object Name, FullName, @{Name='Type';Expression={if\\($_.PSIsContainer\\){'Folder'}else{'File'}}})",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\17798\\\\Desktop\\\\产品\\\\产品规格\" | Measure-Object | ForEach-Object { \"Total items: $\\($_.Count\\)\" })",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\17798\\\\Desktop\\\\产品\" -Directory | Where-Object { $_.Name -ne '.claude' } | Measure-Object | ForEach-Object { \"Total product folders: $\\($_.Count\\)\" })",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\17798\\\\Desktop\\\\产品\" -Directory | Where-Object { $_.Name -ne '.claude' } | ForEach-Object { $_.Name })"
+    ]
+  }
+}

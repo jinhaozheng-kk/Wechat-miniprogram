@@ -1,0 +1,132 @@
+/* =========================================================
+   产品列表页样式
+   ========================================================= */
+
+/* 搜索栏（顶部 sticky，焦点态高亮） */
+.search-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(180deg, #F7F8FA 0%, #F7F8FA 70%, rgba(247,248,250,0.0) 100%);
+  padding: 20rpx 24rpx 24rpx;
+}
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 48rpx;
+  padding: 14rpx 28rpx;
+  border: 2rpx solid transparent;
+  box-shadow: 0 4rpx 20rpx rgba(20, 50, 100, 0.06);
+  transition: border-color .15s ease;
+}
+.search-bar.focused {
+  border-color: #1565C0;
+}
+.search-icon { font-size: 32rpx; margin-right: 14rpx; color: #97A3B4; }
+.search-input { flex: 1; font-size: 28rpx; height: 56rpx; color: #1A2233; }
+.search-placeholder { color: #C9D1DC; }
+.search-clear {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  background: #ECEFF4;
+  color: #5B6B7E;
+  font-size: 22rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 搜索结果 */
+.result-item {
+  margin: 12rpx 24rpx;
+  padding: 28rpx;
+  transition: transform .15s ease;
+}
+.result-item:active { transform: scale(0.99); }
+.result-name {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1A2233;
+  margin-bottom: 6rpx;
+  line-height: 1.4;
+}
+.result-model { font-size: 24rpx; color: #5B6B7E; margin-bottom: 14rpx; }
+.result-tags { display: flex; flex-wrap: wrap; }
+
+/* 搜索"未找到"空状态 + CTA */
+.empty-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12rpx;
+  color: #1565C0;
+  font-size: 26rpx;
+  font-weight: 500;
+}
+
+/* 分类列表行（升级为带阴影的卡片） */
+.cat-row {
+  display: flex;
+  align-items: center;
+  margin: 14rpx 24rpx;
+  padding: 26rpx 28rpx;
+  transition: transform .15s ease;
+}
+.cat-row:active { transform: scale(0.99); }
+.cat-icon-wrap {
+  width: 92rpx;
+  height: 92rpx;
+  border-radius: 22rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 24rpx;
+  position: relative;
+  overflow: hidden;
+}
+.cat-icon-wrap::after {
+  content: "";
+  position: absolute;
+  top: -20rpx;
+  right: -20rpx;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+}
+.cat-icon { font-size: 42rpx; font-weight: 800; }
+.cat-info { flex: 1; overflow: hidden; }
+.cat-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #1A2233;
+  margin-bottom: 6rpx;
+}
+.cat-desc {
+  font-size: 22rpx;
+  color: #97A3B4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cat-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: 16rpx;
+  flex-shrink: 0;
+}
+.cat-count {
+  font-size: 22rpx;
+  color: #1565C0;
+  font-weight: 700;
+  margin-bottom: 4rpx;
+  background: #E8F2FE;
+  padding: 4rpx 14rpx;
+  border-radius: 999rpx;
+}
+.cat-count.preparing { color: #97A3B4; background: #F0F4FA; font-weight: 500; }
+.cat-arrow { font-size: 32rpx; color: #C9D1DC; }

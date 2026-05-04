@@ -1,0 +1,265 @@
+/* =========================================================
+   询价页样式
+   ========================================================= */
+.page-container {
+  padding-bottom: 40rpx;
+}
+
+/* 询价产品列表 */
+.products-card {
+  margin: 0 24rpx;
+  padding: 0;
+}
+.product-row {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 28rpx;
+  border-bottom: 1rpx solid #F0F4FA;
+}
+.product-row:last-child { border-bottom: none; }
+
+/* 序号小圆 */
+.product-index {
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1565C0, #1976D2);
+  color: #fff;
+  font-size: 22rpx;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 18rpx;
+  box-shadow: 0 2rpx 8rpx rgba(21, 101, 192, 0.30);
+}
+
+.product-info { flex: 1; min-width: 0; }
+.product-name {
+  font-size: 28rpx;
+  color: #1A2233;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 6rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.product-model { font-size: 22rpx; color: #97A3B4; }
+.product-remove {
+  font-size: 22rpx;
+  color: #EF5350;
+  padding: 8rpx 16rpx;
+  border: 1rpx solid #FFCDD2;
+  border-radius: 999rpx;
+  flex-shrink: 0;
+  margin-left: 16rpx;
+  background: #FFF5F5;
+  transition: background .15s ease;
+}
+.product-remove:active { background: #FFE0E0; }
+
+.empty-products {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 56rpx 40rpx;
+}
+.empty-tip { font-size: 26rpx; color: #97A3B4; margin-bottom: 14rpx; }
+.empty-link {
+  font-size: 26rpx;
+  color: #1565C0;
+  font-weight: 600;
+  padding: 12rpx 24rpx;
+  background: #E8F2FE;
+  border-radius: 999rpx;
+}
+
+/* 表单卡片 */
+.form-card {
+  margin: 0 24rpx;
+  padding: 0;
+}
+.form-row {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 28rpx;
+  border-bottom: 1rpx solid #F0F4FA;
+  min-height: 88rpx;
+  transition: background .15s ease;
+}
+.form-row:last-child { border-bottom: none; }
+.form-row-block {
+  flex-direction: column;
+  align-items: stretch;
+}
+.form-label {
+  width: 160rpx;
+  font-size: 28rpx;
+  color: #1A2233;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.form-row-block .form-label {
+  width: auto;
+  margin-bottom: 14rpx;
+}
+.required {
+  color: #EF5350;
+  margin-right: 4rpx;
+  font-weight: 700;
+}
+.form-input {
+  flex: 1;
+  font-size: 28rpx;
+  color: #1A2233;
+  min-height: 48rpx;
+}
+.form-textarea {
+  width: 100%;
+  font-size: 28rpx;
+  color: #1A2233;
+  min-height: 120rpx;
+  line-height: 1.6;
+  background: #FAFBFD;
+  padding: 16rpx;
+  border-radius: 12rpx;
+  box-sizing: border-box;
+}
+
+/* 提示卡片 */
+.note-card {
+  margin: 24rpx 24rpx 32rpx;
+  background: linear-gradient(135deg, #F0F4FA 0%, #E8F2FE 100%);
+  box-shadow: none;
+}
+.note-title {
+  font-size: 26rpx;
+  font-weight: 700;
+  color: #1565C0;
+  margin-bottom: 16rpx;
+  display: flex;
+  align-items: center;
+}
+.note-title::before {
+  content: "💡";
+  margin-right: 8rpx;
+  font-size: 28rpx;
+}
+.note-item {
+  font-size: 24rpx;
+  color: #5B6B7E;
+  line-height: 1.85;
+}
+
+/* 底部操作 */
+.bottom-actions {
+  margin: 0 24rpx;
+}
+.submit-btn {
+  width: 100%;
+  height: 96rpx;
+  line-height: 96rpx;
+  font-size: 32rpx;
+  font-weight: 700;
+  letter-spacing: 4rpx;
+  background: linear-gradient(135deg, #1565C0 0%, #1976D2 100%);
+  color: #fff;
+  border-radius: 999rpx;
+  box-shadow: 0 8rpx 20rpx rgba(21, 101, 192, 0.32);
+  border: none;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.submit-btn::after { border: none; }
+.submit-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 3rpx 10rpx rgba(21, 101, 192, 0.30);
+}
+
+.call-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 36rpx;
+  color: #5B6B7E;
+  font-size: 26rpx;
+}
+.call-icon { margin-right: 8rpx; font-size: 30rpx; color: #1565C0; }
+
+/* 提交成功视图（带弹性入场动画） */
+.success-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 140rpx 40rpx 80rpx;
+}
+.success-icon {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+  color: #fff;
+  font-size: 88rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 36rpx;
+  font-weight: 700;
+  box-shadow: 0 12rpx 32rpx rgba(76, 175, 80, 0.35);
+  animation: bounce-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+@keyframes bounce-in {
+  0%   { transform: scale(0.3); opacity: 0; }
+  60%  { transform: scale(1.10); opacity: 1; }
+  80%  { transform: scale(0.95); }
+  100% { transform: scale(1.00); }
+}
+
+.success-title {
+  font-size: 38rpx;
+  font-weight: 800;
+  color: #1A2233;
+  margin-bottom: 14rpx;
+  letter-spacing: 1rpx;
+  animation: fade-in-up 0.5s ease 0.3s both;
+}
+.success-sub {
+  font-size: 26rpx;
+  color: #5B6B7E;
+  margin-bottom: 64rpx;
+  animation: fade-in-up 0.5s ease 0.4s both;
+}
+@keyframes fade-in-up {
+  0%   { transform: translateY(20rpx); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.success-actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  animation: fade-in-up 0.5s ease 0.5s both;
+}
+.success-btn {
+  width: 100% !important;
+  height: 92rpx;
+  line-height: 92rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  border-radius: 999rpx;
+}
+.success-btn.btn-primary {
+  background: linear-gradient(135deg, #1565C0, #1976D2);
+  color: #fff;
+  box-shadow: 0 6rpx 16rpx rgba(21, 101, 192, 0.30);
+  border: none;
+}
+.success-btn.btn-primary::after { border: none; }
+.success-btn.btn-secondary {
+  background: #fff;
+  color: #1565C0;
+  border: 2rpx solid #1565C0;
+}
+.success-btn.btn-secondary::after { border: none; }
