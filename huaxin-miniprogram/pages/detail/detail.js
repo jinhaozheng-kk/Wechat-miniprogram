@@ -32,11 +32,12 @@ Page({
   },
 
   // 立即询价：跳到询价页并预填本产品
+  // 询价页是 tabBar 页面，wx.navigateTo 不能跳，必须用 switchTab；
+  // 但 switchTab 不支持 query，所以产品 id 用 globalData 中转，由询价页 onShow 取走
   goToInquiry() {
     if (!this.data.product) return;
-    wx.navigateTo({
-      url: `/pages/inquiry/inquiry?productId=${this.data.product.id}`,
-    });
+    app.globalData.pendingInquiryProductIds = [this.data.product.id];
+    wx.switchTab({ url: '/pages/inquiry/inquiry' });
   },
 
   // 分享

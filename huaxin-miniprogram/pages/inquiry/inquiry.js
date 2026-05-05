@@ -45,6 +45,13 @@ Page({
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({ active: 2 });
     }
+    // 详情页通过 switchTab 跳过来时把产品 id 暂存在 globalData
+    // （switchTab 不能带 query，所以走 globalData 中转）
+    const ids = app.globalData.pendingInquiryProductIds;
+    if (ids && ids.length > 0) {
+      app.globalData.pendingInquiryProductIds = null;
+      this._fillProductsByIds(ids);
+    }
   },
 
   // 按 id 列表批量取产品（小程序端循环单查；后端目前没有批量查询接口）
