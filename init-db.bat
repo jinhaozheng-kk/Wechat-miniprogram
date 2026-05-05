@@ -1,44 +1,43 @@
 @echo off
-chcp 65001 >nul
 setlocal
 
 rem ============================================================
-rem åä¿¡é€šè®¯ç§‘æŠ€ - æ•°æ®åº“åˆå§‹åŒ–è„šæœ¬ï¼ˆä¸€æ¬¡æ€§ï¼‰
+rem »ªĞÅÍ¨Ñ¶¿Æ¼¼ - Êı¾İ¿â³õÊ¼»¯½Å±¾£¨Ò»´ÎĞÔ£©
 rem ------------------------------------------------------------
-rem æ‰§è¡Œ server\server\src\main\resources\sql\schema.sqlï¼š
+rem Ö´ĞĞ server\server\src\main\resources\sql\schema.sql£º
 rem   - DROP DATABASE IF EXISTS huaxin
-rem   - é‡å»º category / product / inquiry ä¸‰å¼ è¡¨ + æµ‹è¯•æ•°æ®
+rem   - ÖØ½¨ category / product / inquiry ÈıÕÅ±í + ²âÊÔÊı¾İ
 rem
-rem é»˜è®¤è¿æ¥ localhost MySQLï¼Œè´¦å· rootï¼Œå¯†ç  rootã€‚
-rem å¦‚éœ€æ”¹è´¦å·ï¼Œè¯·è®¾ç½®ç¯å¢ƒå˜é‡åå†è¿è¡Œï¼š
+rem Ä¬ÈÏÁ¬½Ó localhost MySQL£¬ÕËºÅ root£¬ÃÜÂë root¡£
+rem ÈçĞè¸ÄÕËºÅ£¬ÇëÉèÖÃ»·¾³±äÁ¿ºóÔÙÔËĞĞ£º
 rem   set DB_USERNAME=youruser
 rem   set DB_PASSWORD=yourpass
 rem   init-db.bat
 rem ============================================================
 
 echo.
-echo === åä¿¡é€šè®¯ç§‘æŠ€ æ•°æ®åº“åˆå§‹åŒ– ===
+echo === »ªĞÅÍ¨Ñ¶¿Æ¼¼ Êı¾İ¿â³õÊ¼»¯ ===
 echo.
-echo æ­¤è„šæœ¬ä¼š**æ¸…ç©ºå¹¶é‡å»º** huaxin æ•°æ®åº“ã€‚
-echo å·²æœ‰æ•°æ®å°†ä¸¢å¤±ï¼
+echo ´Ë½Å±¾»á**Çå¿Õ²¢ÖØ½¨** huaxin Êı¾İ¿â¡£
+echo ÒÑÓĞÊı¾İ½«¶ªÊ§£¡
 echo.
-set /p confirm=ç¡®è®¤ç»§ç»­ï¼Ÿ(è¾“å…¥ y ç»§ç»­ï¼Œå…¶å®ƒä»»æ„é”®å–æ¶ˆ):
+set /p confirm=È·ÈÏ¼ÌĞø£¿(ÊäÈë y ¼ÌĞø£¬ÆäËüÈÎÒâ¼üÈ¡Ïû):
 if /i not "%confirm%"=="y" (
-    echo å·²å–æ¶ˆã€‚
+    echo ÒÑÈ¡Ïû¡£
     pause
     exit /b 0
 )
 
-rem æ£€æŸ¥ mysql å®¢æˆ·ç«¯
+rem ¼ì²é mysql ¿Í»§¶Ë
 where mysql >nul 2>nul
 if errorlevel 1 (
-    echo [é”™è¯¯] æ‰¾ä¸åˆ° mysql å‘½ä»¤ã€‚è¯·å…ˆå®‰è£… MySQL Client å¹¶åŠ å…¥ PATHï¼Œ
-    echo        æˆ–æ‰‹åŠ¨æ‰§è¡Œï¼šmysql -u root -p --default-character-set=utf8mb4 ^< server\server\src\main\resources\sql\schema.sql
+    echo [´íÎó] ÕÒ²»µ½ mysql ÃüÁî¡£ÇëÏÈ°²×° MySQL Client ²¢¼ÓÈë PATH£¬
+    echo        »òÊÖ¶¯Ö´ĞĞ£ºmysql -u root -p --default-character-set=utf8mb4 ^< server\server\src\main\resources\sql\schema.sql
     pause
     exit /b 1
 )
 
-rem é»˜è®¤ root/rootï¼Œå¯è¢«ç¯å¢ƒå˜é‡è¦†ç›–
+rem Ä¬ÈÏ root/root£¬¿É±»»·¾³±äÁ¿¸²¸Ç
 set DB_USER=%DB_USERNAME%
 if "%DB_USER%"=="" set DB_USER=root
 set DB_PASS=%DB_PASSWORD%
@@ -46,27 +45,27 @@ if "%DB_PASS%"=="" set DB_PASS=root
 
 set SCHEMA=%~dp0server\server\src\main\resources\sql\schema.sql
 if not exist "%SCHEMA%" (
-    echo [é”™è¯¯] æ‰¾ä¸åˆ° schema.sqlï¼š%SCHEMA%
+    echo [´íÎó] ÕÒ²»µ½ schema.sql£º%SCHEMA%
     pause
     exit /b 1
 )
 
 echo.
-echo ä½¿ç”¨ user=%DB_USER% è¿æ¥ localhost MySQLï¼Œå¯¼å…¥ schema.sql ...
+echo Ê¹ÓÃ user=%DB_USER% Á¬½Ó localhost MySQL£¬µ¼Èë schema.sql ...
 mysql -u %DB_USER% -p%DB_PASS% --default-character-set=utf8mb4 < "%SCHEMA%"
 
 if errorlevel 1 (
     echo.
-    echo [é”™è¯¯] schema.sql æ‰§è¡Œå¤±è´¥ã€‚å¸¸è§åŸå› ï¼š
-    echo   - MySQL æ²¡å¯åŠ¨ / ç«¯å£ä¸æ˜¯ 3306
-    echo   - è´¦å·å¯†ç ä¸å¯¹ï¼ˆé»˜è®¤ root/rootï¼Œå¯ç”¨ DB_USERNAME / DB_PASSWORD è¦†ç›–ï¼‰
+    echo [´íÎó] schema.sql Ö´ĞĞÊ§°Ü¡£³£¼ûÔ­Òò£º
+    echo   - MySQL Ã»Æô¶¯ / ¶Ë¿Ú²»ÊÇ 3306
+    echo   - ÕËºÅÃÜÂë²»¶Ô£¨Ä¬ÈÏ root/root£¬¿ÉÓÃ DB_USERNAME / DB_PASSWORD ¸²¸Ç£©
     pause
     exit /b 1
 )
 
 echo.
-echo === æ•°æ®åº“ huaxin åˆå§‹åŒ–å®Œæˆ ===
-echo ä¸‹ä¸€æ­¥ï¼šåŒå‡» start.bat ä¸€é”®å¯åŠ¨åç«¯å’Œç®¡ç†ç«¯ã€‚
+echo === Êı¾İ¿â huaxin ³õÊ¼»¯Íê³É ===
+echo ÏÂÒ»²½£ºË«»÷ start.bat Ò»¼üÆô¶¯ºó¶ËºÍ¹ÜÀí¶Ë¡£
 echo.
 pause
 endlocal

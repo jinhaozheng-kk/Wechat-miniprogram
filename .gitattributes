@@ -1,0 +1,4 @@
+# Windows 批处理脚本必须用 CRLF + 系统 ANSI 码页（中文 Windows 默认 GBK），
+# 否则 cmd 解析会乱码 / 闪退。锁住行尾、按二进制存（不让 git autocrlf 改动字节）。
+*.bat   binary
+*.cmd   binary

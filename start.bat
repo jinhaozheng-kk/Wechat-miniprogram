@@ -1,48 +1,47 @@
 @echo off
-chcp 65001 >nul
 setlocal
 
 rem ============================================================
-rem åŽä¿¡é€šè®¯ç§‘æŠ€ - ä¸‰ç«¯ä¸€é”®å¯åŠ¨è„šæœ¬
+rem »ªÐÅÍ¨Ñ¶¿Æ¼¼ - Èý¶ËÒ»¼üÆô¶¯½Å±¾
 rem ------------------------------------------------------------
-rem å¯åŠ¨ä¸¤ç«¯åˆ°ç‹¬ç«‹çª—å£ï¼š
-rem   - Spring Boot åŽç«¯  â†’  http://localhost:8080
-rem   - Vue ç®¡ç†ç«¯        â†’  http://localhost:5173
-rem å°ç¨‹åºè¯·ç”¨å¾®ä¿¡å¼€å‘è€…å·¥å…·æ‰‹åŠ¨æ‰“å¼€ huaxin-miniprogram\
+rem Æô¶¯Á½¶Ëµ½¶ÀÁ¢´°¿Ú£º
+rem   - Spring Boot ºó¶Ë  ¡ú  http://localhost:8080
+rem   - Vue ¹ÜÀí¶Ë        ¡ú  http://localhost:5173
+rem Ð¡³ÌÐòÇëÓÃÎ¢ÐÅ¿ª·¢Õß¹¤¾ßÊÖ¶¯´ò¿ª huaxin-miniprogram\
 rem
-rem å‰ç½®æ¡ä»¶ï¼š
-rem   - JDK 17+   (mvnw ç¼–è¯‘è¿è¡Œéœ€è¦)
-rem   - Node.js 18+ (Vite éœ€è¦)
-rem   - MySQL 8 å·²è¿è¡Œï¼›é¦–æ¬¡ä½¿ç”¨å…ˆåŒå‡» init-db.bat åˆå§‹åŒ–æ•°æ®åº“
+rem Ç°ÖÃÌõ¼þ£º
+rem   - JDK 17+   (mvnw ±àÒëÔËÐÐÐèÒª)
+rem   - Node.js 18+ (Vite ÐèÒª)
+rem   - MySQL 8 ÒÑÔËÐÐ£»Ê×´ÎÊ¹ÓÃÏÈË«»÷ init-db.bat ³õÊ¼»¯Êý¾Ý¿â
 rem ============================================================
 
 echo.
-echo === åŽä¿¡é€šè®¯ç§‘æŠ€ ä¸‰ç«¯ä¸€é”®å¯åŠ¨ ===
+echo === »ªÐÅÍ¨Ñ¶¿Æ¼¼ Èý¶ËÒ»¼üÆô¶¯ ===
 echo.
 
-rem 1) æ£€æŸ¥ Java
+rem 1) ¼ì²é Java
 where java >nul 2>nul
 if errorlevel 1 (
-    echo [é”™è¯¯] æ‰¾ä¸åˆ° javaï¼Œè¯·å…ˆå®‰è£… JDK 17+ å¹¶å°† java åŠ å…¥ PATHã€‚
+    echo [´íÎó] ÕÒ²»µ½ java£¬ÇëÏÈ°²×° JDK 17+ ²¢½« java ¼ÓÈë PATH¡£
     pause
     exit /b 1
 )
 
-rem 2) æ£€æŸ¥ Node
+rem 2) ¼ì²é Node
 where node >nul 2>nul
 if errorlevel 1 (
-    echo [é”™è¯¯] æ‰¾ä¸åˆ° nodeï¼Œè¯·å…ˆå®‰è£… Node.js 18+ã€‚
+    echo [´íÎó] ÕÒ²»µ½ node£¬ÇëÏÈ°²×° Node.js 18+¡£
     pause
     exit /b 1
 )
 
-rem 3) é¦–æ¬¡è¿è¡Œï¼šè£…ä¸€æ¬¡ client/ ä¾èµ–
+rem 3) Ê×´ÎÔËÐÐ£º×°Ò»´Î client/ ÒÀÀµ
 if not exist "%~dp0client\node_modules" (
-    echo [åˆå§‹åŒ–] ç¬¬ä¸€æ¬¡è¿è¡Œï¼Œå®‰è£… client/ ä¾èµ–ä¸­ï¼ˆå¯èƒ½éœ€è¦å‡ åˆ†é’Ÿï¼‰...
+    echo [³õÊ¼»¯] µÚÒ»´ÎÔËÐÐ£¬°²×° client/ ÒÀÀµÖÐ£¨¿ÉÄÜÐèÒª¼¸·ÖÖÓ£©...
     pushd "%~dp0client"
     call npm install
     if errorlevel 1 (
-        echo [é”™è¯¯] npm install å¤±è´¥ï¼Œè¯·æ£€æŸ¥ç½‘ç»œæˆ– npm é…ç½®ã€‚
+        echo [´íÎó] npm install Ê§°Ü£¬Çë¼ì²éÍøÂç»ò npm ÅäÖÃ¡£
         popd
         pause
         exit /b 1
@@ -50,26 +49,26 @@ if not exist "%~dp0client\node_modules" (
     popd
 )
 
-rem 4) å¯åŠ¨åŽç«¯ï¼ˆç‹¬ç«‹çª—å£ï¼‰
-echo [å¯åŠ¨] Spring Boot åŽç«¯ -> æ–°çª—å£ï¼ˆæ ‡é¢˜ï¼šåŽä¿¡-åŽç«¯ï¼‰
-start "åŽä¿¡-åŽç«¯ (8080)" cmd /k "chcp 65001 >nul && cd /d %~dp0server\server && .\mvnw.cmd spring-boot:run"
+rem 4) Æô¶¯ºó¶Ë£¨¶ÀÁ¢´°¿Ú£©
+echo [Æô¶¯] Spring Boot ºó¶Ë -> ÐÂ´°¿Ú£¨±êÌâ£º»ªÐÅ-ºó¶Ë£©
+start "»ªÐÅ-ºó¶Ë (8080)" cmd /k "chcp 65001 >nul && cd /d %~dp0server\server && .\mvnw.cmd spring-boot:run"
 
-rem ç»™åŽç«¯ 3 ç§’ç¼“å†²ï¼Œè®©ç«¯å£å…ˆå ä¸Šå†èµ·å‰ç«¯
+rem ¸øºó¶Ë 3 Ãë»º³å£¬ÈÃ¶Ë¿ÚÏÈÕ¼ÉÏÔÙÆðÇ°¶Ë
 timeout /t 3 /nobreak >nul
 
-rem 5) å¯åŠ¨å‰ç«¯ï¼ˆç‹¬ç«‹çª—å£ï¼‰
-echo [å¯åŠ¨] Vue ç®¡ç†ç«¯ -> æ–°çª—å£ï¼ˆæ ‡é¢˜ï¼šåŽä¿¡-ç®¡ç†ç«¯ï¼‰
-start "åŽä¿¡-ç®¡ç†ç«¯ (5173)" cmd /k "chcp 65001 >nul && cd /d %~dp0client && npm run dev"
+rem 5) Æô¶¯Ç°¶Ë£¨¶ÀÁ¢´°¿Ú£©
+echo [Æô¶¯] Vue ¹ÜÀí¶Ë -> ÐÂ´°¿Ú£¨±êÌâ£º»ªÐÅ-¹ÜÀí¶Ë£©
+start "»ªÐÅ-¹ÜÀí¶Ë (5173)" cmd /k "chcp 65001 >nul && cd /d %~dp0client && npm run dev"
 
 echo.
-echo === å¯åŠ¨æŒ‡ä»¤å·²å‘å‡ºï¼Œå…³æŽ‰å¯¹åº”çª—å£å³å¯åœæ­¢æœåŠ¡ ===
+echo === Æô¶¯Ö¸ÁîÒÑ·¢³ö£¬¹Øµô¶ÔÓ¦´°¿Ú¼´¿ÉÍ£Ö¹·þÎñ ===
 echo.
-echo   åŽç«¯ API:    http://localhost:8080
-echo   ç®¡ç†ç«¯:      http://localhost:5173    ï¼ˆç™»å½•ï¼šadmin / admin123ï¼‰
-echo   å°ç¨‹åº:      ç”¨å¾®ä¿¡å¼€å‘è€…å·¥å…·æ‰“å¼€ huaxin-miniprogram\
+echo   ºó¶Ë API:    http://localhost:8080
+echo   ¹ÜÀí¶Ë:      http://localhost:5173    £¨µÇÂ¼£ºadmin / admin123£©
+echo   Ð¡³ÌÐò:      ÓÃÎ¢ÐÅ¿ª·¢Õß¹¤¾ß´ò¿ª huaxin-miniprogram\
 echo                AppID: wxab8299303b8f0174
 echo.
-echo æç¤ºï¼šå¦‚ç™»å½•å¤±è´¥æˆ–æŽ¥å£ 500ï¼Œå¤šåŠæ˜¯æ•°æ®åº“æœªåˆå§‹åŒ–â€”â€”åŒå‡» init-db.bat è¿è¡Œä¸€æ¬¡ã€‚
+echo ÌáÊ¾£ºÈçµÇÂ¼Ê§°Ü»ò½Ó¿Ú 500£¬¶à°ëÊÇÊý¾Ý¿âÎ´³õÊ¼»¯¡ª¡ªË«»÷ init-db.bat ÔËÐÐÒ»´Î¡£
 echo.
 pause
 endlocal
