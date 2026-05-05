@@ -2,11 +2,13 @@
 setlocal
 
 rem ============================================================
-rem 华信通讯科技 - 数据库初始化脚本（一次性）
+rem 华信通讯科技 - 数据库初始化脚本（幂等，可重复执行）
 rem ------------------------------------------------------------
 rem 执行 server\server\src\main\resources\sql\schema.sql：
-rem   - DROP DATABASE IF EXISTS huaxin
-rem   - 重建 category / product / inquiry 三张表 + 测试数据
+rem   - 数据库 / 表 已存在则跳过创建（IF NOT EXISTS）
+rem   - 分类 / 产品按主键 id 跳过已存在记录，缺失则补齐（INSERT IGNORE）
+rem   - 询价单仅在表为空时插入示例数据
+rem 已录入的真实数据全部保留，不会被覆盖。
 rem
 rem 默认连接 localhost MySQL，账号 root，密码 root。
 rem 如需改账号，请设置环境变量后再运行：
@@ -16,17 +18,9 @@ rem   init-db.bat
 rem ============================================================
 
 echo.
-echo === 华信通讯科技 数据库初始化 ===
+echo === 华信通讯科技 数据库初始化 / 校准 ===
+echo 已有数据保留，缺失结构与默认分类/产品会被补齐。
 echo.
-echo 此脚本会**清空并重建** huaxin 数据库。
-echo 已有数据将丢失！
-echo.
-set /p confirm=确认继续？(输入 y 继续，其它任意键取消):
-if /i not "%confirm%"=="y" (
-    echo 已取消。
-    pause
-    exit /b 0
-)
 
 rem 定位 mysql.exe：先 PATH，再扫常见安装路径
 set "MYSQL_BIN="
@@ -73,7 +67,7 @@ if not exist "%SCHEMA%" (
 )
 
 echo.
-echo 使用 user=%DB_USER% 连接 localhost MySQL，导入 schema.sql ...
+echo 使用 user=%DB_USER% 连接 localhost MySQL，应用 schema.sql（已存在的表/记录会被保留）...
 "%MYSQL_BIN%" -u %DB_USER% -p%DB_PASS% --default-character-set=utf8mb4 < "%SCHEMA%"
 
 if errorlevel 1 (
@@ -86,7 +80,7 @@ if errorlevel 1 (
 )
 
 echo.
-echo === 数据库 huaxin 初始化完成 ===
+echo === 数据库 huaxin 已就绪 ===
 echo 下一步：双击 start.bat 一键启动后端和管理端。
 echo.
 pause

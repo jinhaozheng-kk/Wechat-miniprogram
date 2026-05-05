@@ -1,6 +1,12 @@
 -- =======================================================
--- 华信通讯科技有限公司 后端数据库初始化脚本
+-- 华信通讯科技有限公司 后端数据库初始化脚本（幂等版本）
 -- 数据库：MySQL 8.x（端口 3306）
+--
+-- 重复执行安全：
+--   - 数据库 / 表 已存在则跳过（IF NOT EXISTS）
+--   - 分类 / 产品按主键 id 跳过已存在记录（INSERT IGNORE）
+--   - 询价单仅在表为空时插入示例数据
+--
 -- 使用方式（务必带 --default-character-set=utf8mb4，否则 Windows 下中文会乱码）：
 --   mysql -u root -p --default-character-set=utf8mb4 < schema.sql
 -- =======================================================
@@ -8,9 +14,8 @@
 -- 显式声明客户端连接编码：避免 Windows 命令行 stdin 重定向把 UTF-8 字节误当 GBK
 SET NAMES utf8mb4;
 
--- 1. 创建数据库
-DROP DATABASE IF EXISTS huaxin;
-CREATE DATABASE huaxin DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+-- 1. 创建数据库（不存在才建）
+CREATE DATABASE IF NOT EXISTS huaxin DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE huaxin;
 
 -- =======================================================
@@ -18,7 +23,7 @@ USE huaxin;
 -- =======================================================
 
 -- 产品分类表
-CREATE TABLE category (
+CREATE TABLE IF NOT EXISTS category (
     id            VARCHAR(32)  NOT NULL COMMENT '分类编码（小程序中使用的拼音 id）',
     name          VARCHAR(64)  NOT NULL COMMENT '分类名称',
     icon          VARCHAR(8)            DEFAULT NULL COMMENT '图标文字（单字）',
@@ -34,7 +39,7 @@ CREATE TABLE category (
 ) ENGINE = InnoDB COMMENT ='产品分类表';
 
 -- 产品表
-CREATE TABLE product (
+CREATE TABLE IF NOT EXISTS product (
     id          VARCHAR(32)  NOT NULL COMMENT '产品编码',
     category_id VARCHAR(32)  NOT NULL COMMENT '所属分类编码',
     name        VARCHAR(255) NOT NULL COMMENT '产品名称',
@@ -50,7 +55,7 @@ CREATE TABLE product (
 ) ENGINE = InnoDB COMMENT ='产品表';
 
 -- 询价单表
-CREATE TABLE inquiry (
+CREATE TABLE IF NOT EXISTS inquiry (
     id             BIGINT       NOT NULL AUTO_INCREMENT COMMENT '主键',
     product_ids    JSON                  DEFAULT NULL COMMENT '询价产品 id 列表',
     product_names  VARCHAR(500)          DEFAULT NULL COMMENT '产品名称（冗余，逗号分隔）',
@@ -70,8 +75,9 @@ CREATE TABLE inquiry (
 
 -- =======================================================
 -- 3. 测试数据：分类（14 个，与小程序保持一致）
+-- INSERT IGNORE：按主键 id 跳过已存在的，缺失的补齐
 -- =======================================================
-INSERT INTO category (id, name, icon, color, bg_color, image, description, product_count, sort_order) VALUES
+INSERT IGNORE INTO category (id, name, icon, color, bg_color, image, description, product_count, sort_order) VALUES
 ('guang-xian',    '光纤入户信息箱',    '光', '#1565C0', '#E3F2FD', '/images/guang-xian/1.png',    '适用于光纤入户终端安装，含塑面和铁面两种面板类型',                    6,  1),
 ('xiao-fang',     '消防端子箱',        '消', '#B71C1C', '#FFEBEE', '/images/xiao-fang/1.png',     '明装消防端子箱/模块箱，适用于消防系统配线安装',                        8,  2),
 ('duo-mei-ti',    '多媒体信息箱',      '媒', '#1B5E20', '#E8F5E9', '/images/duo-mei-ti/1.png',    '家庭多媒体综合布线箱，整合网络、电话、有线电视等弱电系统',              12, 3),
@@ -89,8 +95,9 @@ INSERT INTO category (id, name, icon, color, bg_color, image, description, produ
 
 -- =======================================================
 -- 4. 测试数据：产品（每个分类抽 2~3 条代表型号，约 30 条）
+-- INSERT IGNORE：按主键 id 跳过已存在的
 -- =======================================================
-INSERT INTO product (id, category_id, name, model, images, specs, tags) VALUES
+INSERT IGNORE INTO product (id, category_id, name, model, images, specs, tags) VALUES
 -- 光纤入户信息箱
 ('gx-001', 'guang-xian', '光纤入户信息箱 250×300×120 塑面', '250×300×120mm',
  JSON_ARRAY('/images/guang-xian/1.png','/images/guang-xian/2.jpg'),
@@ -245,32 +252,40 @@ INSERT INTO product (id, category_id, name, model, images, specs, tags) VALUES
 
 -- =======================================================
 -- 5. 测试数据：询价单（覆盖最近 7 天，含不同状态，便于图表展示）
+-- 仅在 inquiry 表为空时插入，避免每次执行脚本都堆 8 条假数据
 -- =======================================================
-INSERT INTO inquiry (product_ids, product_names, contact_name, contact_phone, project_name, city, requirement, remark, status, created_at) VALUES
-(JSON_ARRAY('gx-001','gx-002'), '光纤入户信息箱 250×300×120 塑面,光纤入户信息箱 300×350×120 塑面',
- '张工', '13800138001', '杭州滨江某住宅项目', '杭州市',
- '需要光纤入户信息箱共 200 套，要求 1.0mm 板厚', '客户已确认型号', 'CONTACTED', DATE_SUB(NOW(), INTERVAL 6 DAY)),
-(JSON_ARRAY('xf-004'), '明装消防端子箱 300×300×100',
- '李经理', '13900139002', '宁波某商业综合体', '宁波市',
- '消防端子箱 300×300×100 共 80 套', '需提供 3C 认证', 'PENDING', DATE_SUB(NOW(), INTERVAL 5 DAY)),
-(JSON_ARRAY('dmt-003','dmt-006'), '多媒体信息箱 200×300×100 (0.6/1.0),多媒体信息箱 250×300×100 (0.8/1.0)',
- '王总', '13700137003', '温州某酒店', '温州市',
- '多媒体信息箱 50 套', NULL, 'PENDING', DATE_SUB(NOW(), INTERVAL 4 DAY)),
-(JSON_ARRAY('bxpd-005'), '不锈钢防水配电箱 400×500×200',
- '陈先生', '13600136004', '上海某工厂户外配电改造', '上海市',
- '304 不锈钢防水配电箱 30 套，IP54', '本月内需到货', 'PENDING', DATE_SUB(NOW(), INTERVAL 3 DAY)),
-(JSON_ARRAY('pz30-001'), '梅兰 PZ30 暗装 12 回路',
- '赵总', '13500135005', '苏州工业园某厂房', '苏州市',
- 'PZ30 暗装 12 回路 100 套', NULL, 'CLOSED', DATE_SUB(NOW(), INTERVAL 3 DAY)),
-(JSON_ARRAY('fl-001','fl-002'), '防雷接地测试箱 标准型,防雷接地测试箱 加大型',
- '孙工', '13400134006', '某高层建筑防雷工程', '南京市',
- '防雷测试箱共 12 套', '需现场调试', 'PENDING', DATE_SUB(NOW(), INTERVAL 2 DAY)),
-(JSON_ARRAY('jy-002'), '基业配电箱 400×500×200',
- '周经理', '13300133007', '某物流仓库', '合肥市',
- '基业箱 25 套', NULL, 'CONTACTED', DATE_SUB(NOW(), INTERVAL 1 DAY)),
-(JSON_ARRAY('af-001','af-002'), '安防接线箱 标准型,安防接线箱 加大型',
- '吴先生', '13200132008', '某园区监控系统升级', '杭州市',
- '安防接线箱共 18 套', '附详细布点图，已发邮件', 'PENDING', NOW());
+INSERT INTO inquiry (product_ids, product_names, contact_name, contact_phone, project_name, city, requirement, remark, status, created_at)
+SELECT * FROM (
+    SELECT JSON_ARRAY('gx-001','gx-002') AS product_ids,
+           '光纤入户信息箱 250×300×120 塑面,光纤入户信息箱 300×350×120 塑面' AS product_names,
+           '张工' AS contact_name, '13800138001' AS contact_phone,
+           '杭州滨江某住宅项目' AS project_name, '杭州市' AS city,
+           '需要光纤入户信息箱共 200 套，要求 1.0mm 板厚' AS requirement,
+           '客户已确认型号' AS remark, 'CONTACTED' AS status,
+           DATE_SUB(NOW(), INTERVAL 6 DAY) AS created_at
+    UNION ALL SELECT JSON_ARRAY('xf-004'), '明装消防端子箱 300×300×100',
+           '李经理', '13900139002', '宁波某商业综合体', '宁波市',
+           '消防端子箱 300×300×100 共 80 套', '需提供 3C 认证', 'PENDING', DATE_SUB(NOW(), INTERVAL 5 DAY)
+    UNION ALL SELECT JSON_ARRAY('dmt-003','dmt-006'), '多媒体信息箱 200×300×100 (0.6/1.0),多媒体信息箱 250×300×100 (0.8/1.0)',
+           '王总', '13700137003', '温州某酒店', '温州市',
+           '多媒体信息箱 50 套', NULL, 'PENDING', DATE_SUB(NOW(), INTERVAL 4 DAY)
+    UNION ALL SELECT JSON_ARRAY('bxpd-005'), '不锈钢防水配电箱 400×500×200',
+           '陈先生', '13600136004', '上海某工厂户外配电改造', '上海市',
+           '304 不锈钢防水配电箱 30 套，IP54', '本月内需到货', 'PENDING', DATE_SUB(NOW(), INTERVAL 3 DAY)
+    UNION ALL SELECT JSON_ARRAY('pz30-001'), '梅兰 PZ30 暗装 12 回路',
+           '赵总', '13500135005', '苏州工业园某厂房', '苏州市',
+           'PZ30 暗装 12 回路 100 套', NULL, 'CLOSED', DATE_SUB(NOW(), INTERVAL 3 DAY)
+    UNION ALL SELECT JSON_ARRAY('fl-001','fl-002'), '防雷接地测试箱 标准型,防雷接地测试箱 加大型',
+           '孙工', '13400134006', '某高层建筑防雷工程', '南京市',
+           '防雷测试箱共 12 套', '需现场调试', 'PENDING', DATE_SUB(NOW(), INTERVAL 2 DAY)
+    UNION ALL SELECT JSON_ARRAY('jy-002'), '基业配电箱 400×500×200',
+           '周经理', '13300133007', '某物流仓库', '合肥市',
+           '基业箱 25 套', NULL, 'CONTACTED', DATE_SUB(NOW(), INTERVAL 1 DAY)
+    UNION ALL SELECT JSON_ARRAY('af-001','af-002'), '安防接线箱 标准型,安防接线箱 加大型',
+           '吴先生', '13200132008', '某园区监控系统升级', '杭州市',
+           '安防接线箱共 18 套', '附详细布点图，已发邮件', 'PENDING', NOW()
+) AS seed
+WHERE NOT EXISTS (SELECT 1 FROM inquiry LIMIT 1);
 
 -- =======================================================
 -- 完成
