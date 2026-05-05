@@ -50,14 +50,14 @@ if not exist "%~dp0client\node_modules" (
 )
 
 rem 4) 启动后端（独立窗口）
-echo [启动] Spring Boot 后端 -> 新窗口（标题：华信-后端）
+echo [启动] Spring Boot 后端 -^> 新窗口（标题：华信-后端）
 start "华信-后端 (8080)" cmd /k "chcp 65001 >nul && cd /d %~dp0server\server && .\mvnw.cmd spring-boot:run"
 
 rem 给后端 3 秒缓冲，让端口先占上再起前端
 timeout /t 3 /nobreak >nul
 
 rem 5) 启动前端（独立窗口）
-echo [启动] Vue 管理端 -> 新窗口（标题：华信-管理端）
+echo [启动] Vue 管理端 -^> 新窗口（标题：华信-管理端）
 start "华信-管理端 (5173)" cmd /k "chcp 65001 >nul && cd /d %~dp0client && npm run dev"
 
 echo.
