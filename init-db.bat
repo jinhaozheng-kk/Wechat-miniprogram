@@ -28,14 +28,36 @@ if /i not "%confirm%"=="y" (
     exit /b 0
 )
 
-rem 检查 mysql 客户端
-where mysql >nul 2>nul
-if errorlevel 1 (
-    echo [错误] 找不到 mysql 命令。请先安装 MySQL Client 并加入 PATH，
-    echo        或手动执行：mysql -u root -p --default-character-set=utf8mb4 ^< server\server\src\main\resources\sql\schema.sql
+rem 定位 mysql.exe：先 PATH，再扫常见安装路径
+set "MYSQL_BIN="
+for /f "delims=" %%I in ('where mysql 2^>nul') do if not defined MYSQL_BIN set "MYSQL_BIN=%%I"
+
+if not defined MYSQL_BIN (
+    for %%P in (
+        "D:\mysql\bin\mysql.exe"
+        "C:\mysql\bin\mysql.exe"
+        "C:\Program Files\MySQL\MySQL Server 8.4\bin\mysql.exe"
+        "C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe"
+        "C:\Program Files\MySQL\MySQL Workbench 8.0\mysql.exe"
+        "C:\Program Files\MySQL\MySQL Shell 8.0\bin\mysql.exe"
+        "C:\Program Files (x86)\MySQL\MySQL Server 8.0\bin\mysql.exe"
+        "C:\xampp\mysql\bin\mysql.exe"
+        "C:\wamp64\bin\mysql\mysql8.0.31\bin\mysql.exe"
+    ) do (
+        if not defined MYSQL_BIN if exist %%~P set "MYSQL_BIN=%%~P"
+    )
+)
+
+if not defined MYSQL_BIN (
+    echo [错误] 找不到 mysql.exe。
+    echo        本机若已装 MySQL Server / Workbench / Shell，把它们的 bin 目录加进 PATH 即可。
+    echo        否则到 https://dev.mysql.com/downloads/installer/ 安装 MySQL Installer
+    echo        勾选 MySQL Server 与 MySQL Workbench 任一组件，重跑此脚本。
     pause
     exit /b 1
 )
+
+echo 使用 mysql 客户端：%MYSQL_BIN%
 
 rem 默认 root/root，可被环境变量覆盖
 set DB_USER=%DB_USERNAME%
@@ -52,7 +74,7 @@ if not exist "%SCHEMA%" (
 
 echo.
 echo 使用 user=%DB_USER% 连接 localhost MySQL，导入 schema.sql ...
-mysql -u %DB_USER% -p%DB_PASS% --default-character-set=utf8mb4 < "%SCHEMA%"
+"%MYSQL_BIN%" -u %DB_USER% -p%DB_PASS% --default-character-set=utf8mb4 < "%SCHEMA%"
 
 if errorlevel 1 (
     echo.
