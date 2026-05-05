@@ -43,9 +43,9 @@ huaxin:
   # 上传文件对外访问的 URL 前缀（前端拼接用）
   upload-url-prefix: /upload
   # 后台管理硬编码账号（先期最简方案，后续接入数据库用户体系）
-  # ⚠️ 生产环境必须通过环境变量覆盖；默认 changeme 仅用于本地启动占位
+  # 默认值仅用于本地开发；生产环境通过环境变量 HUAXIN_ADMIN_PASSWORD / HUAXIN_ADMIN_TOKEN 覆盖
   admin:
     username: ${HUAXIN_ADMIN_USERNAME:admin}
-    password: ${HUAXIN_ADMIN_PASSWORD:changeme}
+    password: ${HUAXIN_ADMIN_PASSWORD:admin123}
     # 登录后返回的固定 token；前端把它放在请求头 X-Auth-Token
-    token: ${HUAXIN_ADMIN_TOKEN:please-change-me}
+    token: ${HUAXIN_ADMIN_TOKEN:huaxin-admin-token-2026}
