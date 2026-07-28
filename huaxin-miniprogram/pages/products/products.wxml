@@ -1,7 +1,13 @@
 <view class="page-container">
 
+  <!-- 编辑部式页头 -->
+  <view class="page-head reveal">
+    <view class="page-head-title">全部产品</view>
+    <view class="page-head-sub">为建筑工程挑选合适的箱体</view>
+  </view>
+
   <!-- 搜索框（顶部 sticky） -->
-  <view class="search-wrap">
+  <view class="search-wrap reveal reveal-d1">
     <view class="search-bar">
       <text class="search-icon">🔍</text>
       <input
@@ -23,19 +29,35 @@
       <text class="empty-icon">🔍</text>
       <text class="empty-text">未找到相关产品</text>
       <view class="empty-cta" bindtap="clearSearch">清空搜索 ›</view>
+      <view class="custom-card" bindtap="goToInquiry">
+        <view class="custom-text">
+          <view class="custom-title">没找到合适的？</view>
+          <view class="custom-sub">我们接受各类非标箱定制，来图来样加工</view>
+        </view>
+        <view class="custom-btn">去定制</view>
+      </view>
     </view>
     <block wx:else>
       <view
         wx:for="{{searchResults}}"
         wx:key="id"
-        class="result-item card"
+        class="result-item card card-tap"
         bindtap="goToDetail"
         data-id="{{item.id}}"
       >
-        <view class="result-name">{{item.name}}</view>
-        <view class="result-model">{{item.model}}</view>
-        <view class="result-tags">
-          <text wx:for="{{item.tags}}" wx:key="*this" wx:for-item="tag" class="tag">{{tag}}</text>
+        <image
+          wx:if="{{item.images && item.images.length}}"
+          class="result-img"
+          src="{{item.images[0]}}"
+          mode="aspectFit"
+          lazy-load
+        />
+        <view class="result-body">
+          <view class="result-name">{{item.name}}</view>
+          <view class="result-model">{{item.model}}</view>
+          <view class="result-tags">
+            <text wx:for="{{item.tags}}" wx:key="*this" wx:for-item="tag" class="tag">{{tag}}</text>
+          </view>
         </view>
       </view>
     </block>
@@ -43,25 +65,30 @@
 
   <!-- 分类列表 -->
   <block wx:else>
-    <view class="section-title">全部分类（{{categories.length}}个系列）</view>
-    <view
-      wx:for="{{categories}}"
-      wx:key="id"
-      class="cat-row card"
-      bindtap="goToCategory"
-      data-id="{{item.id}}"
-    >
-      <view class="cat-icon-wrap" style="background:{{item.bgColor}}">
-        <text class="cat-icon" style="color:{{item.color}}">{{item.icon}}</text>
+    <!-- 非标定制（深色反差卡，置顶） -->
+    <view class="custom-card custom-card-top card-tap reveal reveal-d2" bindtap="goToInquiry">
+      <view class="custom-text">
+        <view class="custom-title">非标定制</view>
+        <view class="custom-sub">尺寸 · 材质 · 工艺，按图按样加工</view>
       </view>
-      <view class="cat-info">
-        <view class="cat-name">{{item.name}}</view>
-        <view class="cat-desc">{{item.description}}</view>
-      </view>
-      <view class="cat-meta">
-        <text class="cat-count" wx:if="{{item.productCount > 0}}">{{item.productCount}}款</text>
-        <text class="cat-count preparing" wx:else>规格整理中</text>
-        <text class="cat-arrow">›</text>
+      <view class="custom-btn">去定制</view>
+    </view>
+
+    <view class="section-caption reveal reveal-d3">{{categories.length}} 个系列</view>
+
+    <!-- 产品墙：双列图片网格 -->
+    <view class="cat-grid">
+      <view
+        wx:for="{{categories}}"
+        wx:key="id"
+        class="cat-tile card-tap reveal {{index < 6 ? 'reveal-d' + (index + 1) : 'reveal-d6'}}"
+        bindtap="goToCategory"
+        data-id="{{item.id}}"
+      >
+        <image class="cat-tile-img" src="{{item.image}}" mode="aspectFit" lazy-load />
+        <view class="cat-tile-name">{{item.name}}</view>
+        <view class="cat-tile-count" wx:if="{{item.productCount > 0}}">{{item.productCount}} 款</view>
+        <view class="cat-tile-count preparing" wx:else>整理中</view>
       </view>
     </view>
   </block>

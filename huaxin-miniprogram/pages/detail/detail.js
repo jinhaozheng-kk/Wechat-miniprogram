@@ -1,5 +1,6 @@
 const app = getApp();
 const api = require('../../utils/api');
+const share = require('../../utils/share');
 
 Page({
   data: {
@@ -10,6 +11,7 @@ Page({
   },
 
   onLoad(options) {
+    share.enableShareMenu();
     this.loadData(options.id);
   },
 
@@ -40,11 +42,26 @@ Page({
     wx.switchTab({ url: '/pages/inquiry/inquiry' });
   },
 
+  // 非标定制：进入询价页定制模式
+  goToCustom() {
+    app.globalData.inquiryCustomMode = true;
+    wx.switchTab({ url: '/pages/inquiry/inquiry' });
+  },
+
+  // 拨打销售电话
+  callPhone() {
+    const phone = this.data.company.phone;
+    if (phone && !phone.startsWith('请填写')) {
+      wx.makePhoneCall({ phoneNumber: phone });
+    }
+  },
+
   // 分享
   onShareAppMessage() {
-    return {
-      title: this.data.product.name,
-      path: `/pages/detail/detail?id=${this.data.product.id}`,
-    };
+    return share.buildProductShare(this.data.product);
+  },
+
+  onShareTimeline() {
+    return share.buildProductTimeline(this.data.product);
   },
 });

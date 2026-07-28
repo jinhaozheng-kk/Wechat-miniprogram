@@ -1,249 +1,380 @@
 /* =========================================================
-   首页样式
+   首页 · 沉浸式编辑部风（custom navigation）
+   深色 Hero → 弧形过渡 → 浅色 Bento 内容区
    ========================================================= */
 
-/* 轮播 Banner */
-.banner-swiper {
-  width: 100%;
-  height: 400rpx;
-  padding: 16rpx 24rpx 0;
+.home {
+  min-height: 100vh;
+  background: #F5F5F7;
+  padding-bottom: calc(200rpx + env(safe-area-inset-bottom));
+}
+
+/* ====== 深色 Hero ====== */
+.hero {
+  position: relative;
+  background:
+    radial-gradient(120% 90% at 85% -10%, rgba(21, 101, 192, 0.35) 0%, rgba(21, 101, 192, 0) 55%),
+    linear-gradient(175deg, #0B0B0E 0%, #121216 70%, #15151A 100%);
+  padding-bottom: 90rpx;
+  overflow: hidden;
+}
+
+/* 品牌行 */
+.brand-row {
+  display: flex;
+  align-items: center;
+  padding: 16rpx 40rpx 0;
+}
+.brand-mark {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 16rpx;
+  background: #FFFFFF;
+  color: #0B0B0E;
+  font-size: 22rpx;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16rpx;
+  letter-spacing: 1rpx;
+}
+.brand-name {
+  font-size: 24rpx;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 2rpx;
+}
+
+/* 编辑部式大标题 */
+.hero-copy {
+  padding: 56rpx 40rpx 0;
+}
+.hero-eyebrow {
+  font-size: 22rpx;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 6rpx;
+  margin-bottom: 20rpx;
+}
+.hero-title {
+  font-size: 80rpx;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.18;
+  letter-spacing: -2rpx;
+}
+.hero-title.accent {
+  background: linear-gradient(90deg, #5AA9FF 0%, #8BC4FF 60%, #FFFFFF 120%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero-sub {
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: 22rpx;
+  letter-spacing: 2rpx;
+}
+
+/* 双 CTA */
+.hero-actions {
+  display: flex;
+  gap: 20rpx;
+  padding: 40rpx 40rpx 0;
+}
+.hero-btn {
+  height: 84rpx;
+  padding: 0 44rpx;
+  border-radius: 980rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  font-weight: 600;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
+}
+.hero-btn:active { transform: scale(0.94); opacity: 0.85; }
+.hero-btn.solid {
+  background: #FFFFFF;
+  color: #0B0B0E;
+}
+.hero-btn.ghost {
+  background: rgba(255, 255, 255, 0.10);
+  color: #FFFFFF;
+  border: 1rpx solid rgba(255, 255, 255, 0.18);
+}
+
+/* 精选卡片（peek 滑动） */
+.featured-swiper {
+  height: 420rpx;
+  margin-top: 56rpx;
+}
+.featured-item {
+  padding-right: 24rpx;
   box-sizing: border-box;
 }
-.banner-slide {
+.featured-card {
   position: relative;
-  width: 100%;
-  height: 100%;
+  height: 420rpx;
+  border-radius: 40rpx;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  padding: 0 44rpx;
+  padding: 0 40rpx;
   overflow: hidden;
-  border-radius: 24rpx;
-  box-shadow: 0 8rpx 28rpx rgba(20, 50, 100, 0.18);
+  border: 1rpx solid rgba(255, 255, 255, 0.08);
+  box-sizing: border-box;
+}
+.featured-text {
+  flex: 1;
+  z-index: 1;
+}
+.featured-tag {
+  font-size: 20rpx;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 4rpx;
+  margin-bottom: 14rpx;
+}
+.featured-title {
+  font-size: 44rpx;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.3;
+  letter-spacing: -0.5rpx;
+  margin-bottom: 12rpx;
+  white-space: pre-line;
+}
+.featured-sub {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 1rpx;
+}
+/* 悬浮透明底产品图（苹果式：自由轮廓 + 深投影） */
+.featured-img {
+  width: 250rpx;
+  height: 280rpx;
+  flex-shrink: 0;
+  z-index: 1;
+  filter: drop-shadow(0 20rpx 36rpx rgba(0, 0, 0, 0.5));
 }
 
-/* 背景装饰圆 */
-.banner-deco-1 {
-  position: absolute;
-  right: -80rpx;
-  top: -80rpx;
-  width: 320rpx;
-  height: 320rpx;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.10);
+/* 精选指示点 */
+.featured-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10rpx;
+  padding-top: 24rpx;
 }
-.banner-deco-2 {
+.featured-dot {
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 980rpx;
+  background: rgba(255, 255, 255, 0.25);
+  transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.featured-dot.on {
+  width: 32rpx;
+  background: #FFFFFF;
+}
+
+/* 弧形过渡 */
+.hero-curve {
   position: absolute;
-  right: 80rpx;
-  bottom: -100rpx;
+  left: -10%;
+  right: -10%;
+  bottom: -2rpx;
+  height: 56rpx;
+  background: #F5F5F7;
+  border-radius: 100% 100% 0 0;
+}
+
+/* ====== 浅色内容区 ====== */
+.body {
+  position: relative;
+  padding-top: 8rpx;
+}
+
+/* Bento 网格 */
+.bento {
+  padding: 0 32rpx;
+}
+.bento-row {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 20rpx;
+}
+
+/* 通栏主格 */
+.bento-hero {
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  border-radius: 36rpx;
+  padding: 40rpx 44rpx;
+  border: 1rpx solid rgba(0, 0, 0, 0.03);
+  box-shadow: 0 2rpx 16rpx rgba(0, 0, 0, 0.04);
+}
+.bento-hero-text { flex: 1; }
+.bento-name-lg {
+  font-size: 38rpx;
+  font-weight: 800;
+  color: #1D1D1F;
+  letter-spacing: -0.5rpx;
+  margin-bottom: 8rpx;
+}
+.bento-count {
+  font-size: 22rpx;
+  color: #86868B;
+  margin-bottom: 20rpx;
+}
+.bento-go {
+  display: inline-block;
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #1565C0;
+}
+.bento-hero-img {
   width: 220rpx;
   height: 220rpx;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.06);
-}
-
-/* 文字区 */
-.banner-content {
-  flex: 1;
-  z-index: 1;
-}
-.banner-tag {
-  display: inline-flex;
-  align-items: center;
-  background: rgba(255,255,255,0.22);
-  backdrop-filter: blur(8rpx);
-  color: rgba(255,255,255,0.98);
-  font-size: 20rpx;
-  padding: 8rpx 20rpx;
-  border-radius: 999rpx;
-  margin-bottom: 20rpx;
-  letter-spacing: 3rpx;
-  font-weight: 500;
-}
-.banner-title {
-  font-size: 48rpx;
-  font-weight: 800;
-  color: #fff;
-  line-height: 1.32;
-  margin-bottom: 16rpx;
-  letter-spacing: 1rpx;
-  white-space: pre-line;
-  text-shadow: 0 2rpx 8rpx rgba(0,0,0,0.10);
-}
-.banner-subtitle {
-  font-size: 22rpx;
-  color: rgba(255,255,255,0.85);
-  line-height: 1.7;
-}
-
-/* 产品图 */
-.banner-product-img {
-  width: 230rpx;
-  height: 230rpx;
   flex-shrink: 0;
-  z-index: 1;
-  filter: drop-shadow(0 4rpx 16rpx rgba(0,0,0,0.18));
+  filter: drop-shadow(0 10rpx 20rpx rgba(0, 0, 0, 0.12));
 }
 
-/* 电话条（白底卡片，左圆形图标 + 文字 + 右胶囊CTA） */
-.phone-bar {
-  display: flex;
-  align-items: center;
-  background: #fff;
-  padding: 24rpx 28rpx;
-  margin: 24rpx;
-  border-radius: 20rpx;
-  box-shadow: 0 4rpx 20rpx rgba(20, 50, 100, 0.06);
-  transition: transform .2s ease;
-}
-.phone-bar:active { transform: scale(0.99); }
-.phone-icon-wrap {
-  width: 80rpx;
-  height: 80rpx;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #1565C0 0%, #1976D2 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 24rpx;
-  flex-shrink: 0;
-  box-shadow: 0 4rpx 12rpx rgba(21, 101, 192, 0.30);
-}
-.phone-icon {
-  font-size: 40rpx;
-  color: #fff;
-}
-.phone-info {
+/* 半宽方格 */
+.bento-half {
   flex: 1;
+  background: #FFFFFF;
+  border-radius: 36rpx;
+  padding: 32rpx;
+  border: 1rpx solid rgba(0, 0, 0, 0.03);
+  box-shadow: 0 2rpx 16rpx rgba(0, 0, 0, 0.04);
   display: flex;
   flex-direction: column;
-}
-.phone-label {
-  font-size: 22rpx;
-  color: #97A3B4;
-  margin-bottom: 4rpx;
-}
-.phone-number {
-  font-size: 34rpx;
-  font-weight: 700;
-  color: #1A2233;
-  letter-spacing: 1rpx;
-}
-.phone-tip {
-  font-size: 22rpx;
-  color: #fff;
-  background: linear-gradient(135deg, #1565C0, #1976D2);
-  padding: 10rpx 22rpx;
-  border-radius: 999rpx;
-  font-weight: 500;
-  box-shadow: 0 4rpx 10rpx rgba(21, 101, 192, 0.25);
-}
-
-/* 分类宫格（白卡 + 圆角 + 阴影） */
-.category-grid {
-  display: flex;
-  flex-wrap: wrap;
-  background: #fff;
-  padding: 16rpx 8rpx 24rpx;
-  margin: 0 24rpx 24rpx;
-  border-radius: 20rpx;
-  box-shadow: 0 4rpx 20rpx rgba(20, 50, 100, 0.06);
-}
-.category-item {
-  width: 25%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20rpx 4rpx;
-  transition: transform .15s ease;
-}
-.category-item:active { transform: scale(0.94); }
-
-.cat-img-wrap {
-  width: 112rpx;
-  height: 112rpx;
-  border-radius: 24rpx;
-  background: linear-gradient(135deg, #F0F4FA 0%, #E8F2FE 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 12rpx;
-  box-shadow: 0 2rpx 10rpx rgba(20, 50, 100, 0.04);
-}
-.cat-img {
-  width: 88rpx;
-  height: 88rpx;
-}
-.cat-name {
-  font-size: 22rpx;
-  color: #1A2233;
-  text-align: center;
-  line-height: 1.4;
-  max-width: 140rpx;
   overflow: hidden;
+}
+.bento-name {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #1D1D1F;
+  letter-spacing: -0.3rpx;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.bento-half .bento-count { margin-bottom: 16rpx; margin-top: 4rpx; }
+.bento-half-img {
+  width: 100%;
+  height: 200rpx;
+  filter: drop-shadow(0 8rpx 16rpx rgba(0, 0, 0, 0.10));
+}
+
+/* 小格 */
+.bento-small {
+  flex: 1;
+  background: #FFFFFF;
+  border-radius: 32rpx;
+  padding: 24rpx 16rpx 20rpx;
+  border: 1rpx solid rgba(0, 0, 0, 0.03);
+  box-shadow: 0 2rpx 16rpx rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bento-small-img {
+  width: 100%;
+  height: 130rpx;
+  filter: drop-shadow(0 6rpx 12rpx rgba(0, 0, 0, 0.10));
+  margin-bottom: 12rpx;
+}
+.bento-name-sm {
+  font-size: 22rpx;
   font-weight: 500;
+  color: #1D1D1F;
+  text-align: center;
+  line-height: 1.35;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-}
-.cat-count {
-  font-size: 20rpx;
-  color: #1565C0;
-  margin-top: 6rpx;
-  font-weight: 500;
-}
-.cat-count.preparing {
-  color: #C9D1DC;
-  font-weight: 400;
+  overflow: hidden;
 }
 
-/* 快捷询价 CTA 卡（大号渐变卡片） */
-.inquiry-card {
-  position: relative;
+/* 查看全部 */
+.bento-all {
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, #1565C0 0%, #1976D2 60%, #1E88E5 100%);
-  border-radius: 24rpx;
-  margin: 0 24rpx 32rpx;
-  padding: 36rpx 40rpx;
-  overflow: hidden;
-  box-shadow: 0 8rpx 24rpx rgba(21, 101, 192, 0.30);
+  justify-content: space-between;
+  margin-top: 20rpx;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 32rpx;
+  padding: 30rpx 40rpx;
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #1D1D1F;
 }
-.inquiry-deco {
-  position: absolute;
-  right: -60rpx;
-  top: -50rpx;
-  width: 220rpx;
-  height: 220rpx;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.10);
+.bento-all-arrow { color: #86868B; }
+
+/* 电话行 */
+.phone-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #FFFFFF;
+  border-radius: 32rpx;
+  margin: 28rpx 32rpx 0;
+  padding: 30rpx 40rpx;
+  border: 1rpx solid rgba(0, 0, 0, 0.03);
+  box-shadow: 0 2rpx 16rpx rgba(0, 0, 0, 0.04);
+}
+.phone-left { display: flex; flex-direction: column; }
+.phone-label { font-size: 22rpx; color: #86868B; margin-bottom: 4rpx; }
+.phone-number {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #1D1D1F;
+  letter-spacing: 0.5rpx;
+}
+.phone-cta {
+  font-size: 24rpx;
+  color: #1565C0;
+  background: rgba(21, 101, 192, 0.10);
+  padding: 12rpx 30rpx;
+  border-radius: 980rpx;
+  font-weight: 600;
+}
+
+/* 快捷询价（深色反差卡） */
+.inquiry-card {
+  display: flex;
+  align-items: center;
+  background: #1D1D1F;
+  border-radius: 36rpx;
+  margin: 24rpx 32rpx 0;
+  padding: 40rpx 44rpx;
 }
 .inquiry-left {
   flex: 1;
   display: flex;
   flex-direction: column;
-  z-index: 1;
 }
 .inquiry-title {
-  font-size: 34rpx;
+  font-size: 36rpx;
   font-weight: 700;
-  color: #fff;
+  color: #FFFFFF;
   margin-bottom: 8rpx;
-  letter-spacing: 1rpx;
+  letter-spacing: -0.5rpx;
 }
 .inquiry-sub {
   font-size: 22rpx;
-  color: rgba(255,255,255,0.82);
+  color: rgba(255, 255, 255, 0.55);
 }
 .inquiry-btn {
-  background: #fff;
-  color: #1565C0;
+  background: #1565C0;
+  color: #FFFFFF;
   font-size: 28rpx;
-  font-weight: 700;
-  padding: 18rpx 38rpx;
-  border-radius: 999rpx;
-  z-index: 1;
-  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.10);
-  transition: transform .15s ease;
+  font-weight: 600;
+  padding: 20rpx 40rpx;
+  border-radius: 980rpx;
 }
-.inquiry-card:active .inquiry-btn { transform: scale(0.96); }

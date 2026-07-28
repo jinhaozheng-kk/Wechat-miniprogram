@@ -21,7 +21,12 @@ Page({
     submitting: false,
     // 提交成功视图开关
     submitted: false,
+    // 非标定制模式（从"去定制"入口进入）
+    isCustom: false,
   },
+
+  // 定制需求模板（进入定制模式时预填，方便客户照着填）
+  CUSTOM_TEMPLATE: '【非标定制】\n箱体用途：\n外形尺寸(高×宽×深mm)：\n板材/厚度：\n表面处理(喷塑/拉丝等)：\n开孔与安装要求：\n数量：\n(可附图纸，提交后销售会联系您对接)',
 
   /**
    * 进入页面的来源：
@@ -52,6 +57,29 @@ Page({
       app.globalData.pendingInquiryProductIds = null;
       this._fillProductsByIds(ids);
     }
+    // "去定制"入口（同样走 globalData 中转）
+    if (app.globalData.inquiryCustomMode) {
+      app.globalData.inquiryCustomMode = false;
+      this.enterCustomMode();
+    }
+  },
+
+  // 进入定制模式：预填需求模板
+  enterCustomMode() {
+    const patch = { isCustom: true };
+    if (!this.data.form.requirement.trim()) {
+      patch['form.requirement'] = this.CUSTOM_TEMPLATE;
+    }
+    this.setData(patch);
+  },
+
+  // 退出定制模式，回到普通询价
+  exitCustomMode() {
+    const patch = { isCustom: false };
+    if (this.data.form.requirement === this.CUSTOM_TEMPLATE) {
+      patch['form.requirement'] = '';
+    }
+    this.setData(patch);
   },
 
   // 按 id 列表批量取产品（小程序端循环单查；后端目前没有批量查询接口）
@@ -93,10 +121,14 @@ Page({
 
   // 提交询价
   async onSubmit() {
-    const { products, form } = this.data;
-    // 校验
-    if (products.length === 0) {
+    const { products, form, isCustom } = this.data;
+    // 校验（定制模式不要求选产品）
+    if (!isCustom && products.length === 0) {
       wx.showToast({ title: '请先选择询价产品', icon: 'none' });
+      return;
+    }
+    if (isCustom && form.requirement.trim() === this.CUSTOM_TEMPLATE.trim()) {
+      wx.showToast({ title: '请填写定制需求的具体内容', icon: 'none' });
       return;
     }
     if (!form.contactName.trim()) {
@@ -145,6 +177,7 @@ Page({
   submitAnother() {
     this.setData({
       submitted: false,
+      isCustom: false,
       products: [],
       form: {
         contactName: '',

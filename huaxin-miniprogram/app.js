@@ -1,4 +1,5 @@
 const company = require('./data/company');
+const { cloud } = require('./config');
 
 App({
   globalData: {
@@ -6,5 +7,12 @@ App({
     company,
   },
 
-  onLaunch() {},
+  onLaunch() {
+    if (cloud.enabled && wx.cloud) {
+      wx.cloud.init({
+        env: cloud.env,
+        traceUser: true,
+      });
+    }
+  },
 });

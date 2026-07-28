@@ -1,5 +1,64 @@
 // 网络请求工具：把 wx.request 包成 Promise，并统一拆解后端返回的 { code, message, data } 包装
-const { baseURL } = require('../config');
+const { apiMode, baseURL, cloud } = require('../config');
+
+function handleResponse(res, silent, resolve, reject) {
+  // HTTP 层错误
+  if (res.statusCode < 200 || res.statusCode >= 300) {
+    const msg = `服务器错误 ${res.statusCode}`;
+    if (!silent) wx.showToast({ title: msg, icon: 'none' });
+    reject(new Error(msg));
+    return;
+  }
+  // 业务层错误（按统一返回结构 { code, message, data }）
+  const body = res.data || {};
+  if (body.code === 0) {
+    resolve(body.data);
+  } else {
+    const msg = body.message || '请求失败';
+    if (!silent) wx.showToast({ title: msg, icon: 'none' });
+    reject(new Error(msg));
+  }
+}
+
+function requestByCloudRun({ url, method, data, silent }, resolve, reject) {
+  wx.cloud.callContainer({
+    config: {
+      env: cloud.env,
+    },
+    path: url,
+    method,
+    data,
+    header: {
+      'Content-Type': 'application/json',
+      'X-WX-SERVICE': cloud.service,
+    },
+    success(res) {
+      handleResponse(res, silent, resolve, reject);
+    },
+    fail(err) {
+      const msg = '网络错误，请检查云托管服务是否已部署';
+      if (!silent) wx.showToast({ title: msg, icon: 'none' });
+      reject(err);
+    },
+  });
+}
+
+function requestByLocalHttp({ url, method, data, silent }, resolve, reject) {
+  wx.request({
+    url: baseURL + url,
+    method,
+    data,
+    header: { 'Content-Type': 'application/json' },
+    success(res) {
+      handleResponse(res, silent, resolve, reject);
+    },
+    fail(err) {
+      const msg = '网络错误，请检查后端是否启动';
+      if (!silent) wx.showToast({ title: msg, icon: 'none' });
+      reject(err);
+    },
+  });
+}
 
 /**
  * 通用请求方法
@@ -12,35 +71,12 @@ const { baseURL } = require('../config');
  */
 function request({ url, method = 'GET', data, silent = false } = {}) {
   return new Promise((resolve, reject) => {
-    wx.request({
-      url: baseURL + url,
-      method,
-      data,
-      header: { 'Content-Type': 'application/json' },
-      success(res) {
-        // HTTP 层错误
-        if (res.statusCode < 200 || res.statusCode >= 300) {
-          const msg = `服务器错误 ${res.statusCode}`;
-          if (!silent) wx.showToast({ title: msg, icon: 'none' });
-          reject(new Error(msg));
-          return;
-        }
-        // 业务层错误（按统一返回结构 { code, message, data }）
-        const body = res.data || {};
-        if (body.code === 0) {
-          resolve(body.data);
-        } else {
-          const msg = body.message || '请求失败';
-          if (!silent) wx.showToast({ title: msg, icon: 'none' });
-          reject(new Error(msg));
-        }
-      },
-      fail(err) {
-        const msg = '网络错误，请检查后端是否启动';
-        if (!silent) wx.showToast({ title: msg, icon: 'none' });
-        reject(err);
-      },
-    });
+    const opts = { url, method, data, silent };
+    if (apiMode === 'cloudrun' && cloud.enabled) {
+      requestByCloudRun(opts, resolve, reject);
+      return;
+    }
+    requestByLocalHttp(opts, resolve, reject);
   });
 }
 

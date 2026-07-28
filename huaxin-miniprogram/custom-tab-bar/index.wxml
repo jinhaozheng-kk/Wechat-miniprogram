@@ -1,13 +1,15 @@
-<view class="tab-bar">
-  <view
-    wx:for="{{tabs}}"
-    wx:key="index"
-    class="tab-item {{active === index ? 'active' : ''}}"
-    bindtap="switchTab"
-    data-index="{{index}}"
-    data-path="{{item.pagePath}}"
-  >
-    <text class="tab-icon">{{item.icon}}</text>
-    <text class="tab-text">{{item.text}}</text>
+<view class="tab-bar-wrap">
+  <view class="tab-bar">
+    <view
+      wx:for="{{tabs}}"
+      wx:key="index"
+      class="tab-item {{active === index ? 'active' : ''}}"
+      bindtap="switchTab"
+      data-index="{{index}}"
+      data-path="{{item.pagePath}}"
+    >
+      <text class="tab-icon">{{item.icon}}</text>
+      <text class="tab-text">{{item.text}}</text>
+    </view>
   </view>
 </view>

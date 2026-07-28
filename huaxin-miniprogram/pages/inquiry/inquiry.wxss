@@ -1,20 +1,42 @@
 /* =========================================================
-   询价页样式
+   询价页样式 · 苹果式浅色极简（iOS 设置组风格表单）
    ========================================================= */
-.page-container {
-  padding-bottom: 40rpx;
+
+/* 非标定制模式提示行 */
+.custom-hint {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 16rpx 32rpx 0;
+  padding: 22rpx 32rpx;
+  background: rgba(21, 101, 192, 0.07);
+  border-radius: 24rpx;
 }
+.custom-hint-text {
+  font-size: 24rpx;
+  color: #1565C0;
+  font-weight: 500;
+}
+.custom-hint-exit {
+  font-size: 24rpx;
+  color: #86868B;
+  flex-shrink: 0;
+  margin-left: 20rpx;
+}
+
+/* 定制模式下的需求输入框加高 */
+.form-textarea-tall { min-height: 320rpx; }
 
 /* 询价产品列表 */
 .products-card {
-  margin: 0 24rpx;
+  margin: 0 32rpx;
   padding: 0;
 }
 .product-row {
   display: flex;
   align-items: center;
-  padding: 24rpx 28rpx;
-  border-bottom: 1rpx solid #F0F4FA;
+  padding: 26rpx 32rpx;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.05);
 }
 .product-row:last-child { border-bottom: none; }
 
@@ -23,22 +45,21 @@
   width: 44rpx;
   height: 44rpx;
   border-radius: 50%;
-  background: linear-gradient(135deg, #1565C0, #1976D2);
-  color: #fff;
+  background: rgba(21, 101, 192, 0.10);
+  color: #1565C0;
   font-size: 22rpx;
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  margin-right: 18rpx;
-  box-shadow: 0 2rpx 8rpx rgba(21, 101, 192, 0.30);
+  margin-right: 20rpx;
 }
 
 .product-info { flex: 1; min-width: 0; }
 .product-name {
   font-size: 28rpx;
-  color: #1A2233;
+  color: #1D1D1F;
   font-weight: 500;
   line-height: 1.4;
   margin-bottom: 6rpx;
@@ -46,19 +67,18 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.product-model { font-size: 22rpx; color: #97A3B4; }
+.product-model { font-size: 22rpx; color: #AEAEB2; }
 .product-remove {
   font-size: 22rpx;
-  color: #EF5350;
-  padding: 8rpx 16rpx;
-  border: 1rpx solid #FFCDD2;
-  border-radius: 999rpx;
+  color: #FF3B30;
+  padding: 10rpx 20rpx;
+  border-radius: 980rpx;
   flex-shrink: 0;
   margin-left: 16rpx;
-  background: #FFF5F5;
-  transition: background .15s ease;
+  background: rgba(255, 59, 48, 0.08);
+  transition: background 0.2s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.product-remove:active { background: #FFE0E0; }
+.product-remove:active { background: rgba(255, 59, 48, 0.16); transform: scale(0.94); }
 
 .empty-products {
   display: flex;
@@ -66,28 +86,27 @@
   align-items: center;
   padding: 56rpx 40rpx;
 }
-.empty-tip { font-size: 26rpx; color: #97A3B4; margin-bottom: 14rpx; }
+.empty-tip { font-size: 26rpx; color: #AEAEB2; margin-bottom: 16rpx; }
 .empty-link {
   font-size: 26rpx;
   color: #1565C0;
   font-weight: 600;
-  padding: 12rpx 24rpx;
-  background: #E8F2FE;
-  border-radius: 999rpx;
+  padding: 14rpx 30rpx;
+  background: rgba(21, 101, 192, 0.10);
+  border-radius: 980rpx;
 }
 
-/* 表单卡片 */
+/* 表单卡片（iOS 设置组） */
 .form-card {
-  margin: 0 24rpx;
+  margin: 0 32rpx;
   padding: 0;
 }
 .form-row {
   display: flex;
   align-items: center;
-  padding: 24rpx 28rpx;
-  border-bottom: 1rpx solid #F0F4FA;
+  padding: 26rpx 32rpx;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.05);
   min-height: 88rpx;
-  transition: background .15s ease;
 }
 .form-row:last-child { border-bottom: none; }
 .form-row-block {
@@ -97,7 +116,7 @@
 .form-label {
   width: 160rpx;
   font-size: 28rpx;
-  color: #1A2233;
+  color: #1D1D1F;
   font-weight: 500;
   flex-shrink: 0;
 }
@@ -106,75 +125,69 @@
   margin-bottom: 14rpx;
 }
 .required {
-  color: #EF5350;
+  color: #FF3B30;
   margin-right: 4rpx;
   font-weight: 700;
 }
 .form-input {
   flex: 1;
   font-size: 28rpx;
-  color: #1A2233;
+  color: #1D1D1F;
   min-height: 48rpx;
 }
 .form-textarea {
   width: 100%;
   font-size: 28rpx;
-  color: #1A2233;
+  color: #1D1D1F;
   min-height: 120rpx;
   line-height: 1.6;
-  background: #FAFBFD;
-  padding: 16rpx;
-  border-radius: 12rpx;
+  background: #F5F5F7;
+  padding: 20rpx;
+  border-radius: 16rpx;
   box-sizing: border-box;
 }
 
-/* 提示卡片 */
+/* 提示卡片：极简灰字说明 */
 .note-card {
-  margin: 24rpx 24rpx 32rpx;
-  background: linear-gradient(135deg, #F0F4FA 0%, #E8F2FE 100%);
+  margin: 24rpx 32rpx 32rpx;
+  background: transparent;
+  border: none;
   box-shadow: none;
+  padding: 0 8rpx;
 }
 .note-title {
-  font-size: 26rpx;
-  font-weight: 700;
-  color: #1565C0;
-  margin-bottom: 16rpx;
-  display: flex;
-  align-items: center;
-}
-.note-title::before {
-  content: "💡";
-  margin-right: 8rpx;
-  font-size: 28rpx;
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #86868B;
+  margin-bottom: 10rpx;
 }
 .note-item {
-  font-size: 24rpx;
-  color: #5B6B7E;
+  font-size: 22rpx;
+  color: #AEAEB2;
   line-height: 1.85;
 }
 
 /* 底部操作 */
 .bottom-actions {
-  margin: 0 24rpx;
+  margin: 0 32rpx;
 }
 .submit-btn {
   width: 100%;
   height: 96rpx;
   line-height: 96rpx;
   font-size: 32rpx;
-  font-weight: 700;
-  letter-spacing: 4rpx;
-  background: linear-gradient(135deg, #1565C0 0%, #1976D2 100%);
-  color: #fff;
-  border-radius: 999rpx;
-  box-shadow: 0 8rpx 20rpx rgba(21, 101, 192, 0.32);
+  font-weight: 600;
+  letter-spacing: 2rpx;
+  background: #1565C0;
+  color: #FFFFFF;
+  border-radius: 980rpx;
   border: none;
-  transition: transform .15s ease, box-shadow .15s ease;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
 }
 .submit-btn::after { border: none; }
 .submit-btn:active {
-  transform: scale(0.98);
-  box-shadow: 0 3rpx 10rpx rgba(21, 101, 192, 0.30);
+  transform: scale(0.96);
+  opacity: 0.85;
 }
 
 .call-link {
@@ -182,12 +195,13 @@
   align-items: center;
   justify-content: center;
   padding: 36rpx;
-  color: #5B6B7E;
+  color: #1565C0;
   font-size: 26rpx;
+  font-weight: 500;
 }
-.call-icon { margin-right: 8rpx; font-size: 30rpx; color: #1565C0; }
+.call-icon { margin-right: 8rpx; font-size: 30rpx; }
 
-/* 提交成功视图（带弹性入场动画） */
+/* 提交成功视图（弹性入场） */
 .success-box {
   display: flex;
   flex-direction: column;
@@ -198,7 +212,7 @@
   width: 160rpx;
   height: 160rpx;
   border-radius: 50%;
-  background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+  background: #34C759;
   color: #fff;
   font-size: 88rpx;
   display: flex;
@@ -206,7 +220,6 @@
   justify-content: center;
   margin-bottom: 36rpx;
   font-weight: 700;
-  box-shadow: 0 12rpx 32rpx rgba(76, 175, 80, 0.35);
   animation: bounce-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 @keyframes bounce-in {
@@ -217,16 +230,16 @@
 }
 
 .success-title {
-  font-size: 38rpx;
+  font-size: 40rpx;
   font-weight: 800;
-  color: #1A2233;
+  color: #1D1D1F;
   margin-bottom: 14rpx;
-  letter-spacing: 1rpx;
+  letter-spacing: -0.5rpx;
   animation: fade-in-up 0.5s ease 0.3s both;
 }
 .success-sub {
   font-size: 26rpx;
-  color: #5B6B7E;
+  color: #86868B;
   margin-bottom: 64rpx;
   animation: fade-in-up 0.5s ease 0.4s both;
 }
@@ -244,22 +257,21 @@
 }
 .success-btn {
   width: 100% !important;
-  height: 92rpx;
-  line-height: 92rpx;
+  height: 96rpx;
+  line-height: 96rpx;
   font-size: 30rpx;
   font-weight: 600;
-  border-radius: 999rpx;
+  border-radius: 980rpx;
 }
 .success-btn.btn-primary {
-  background: linear-gradient(135deg, #1565C0, #1976D2);
-  color: #fff;
-  box-shadow: 0 6rpx 16rpx rgba(21, 101, 192, 0.30);
+  background: #1565C0;
+  color: #FFFFFF;
   border: none;
 }
 .success-btn.btn-primary::after { border: none; }
 .success-btn.btn-secondary {
-  background: #fff;
+  background: rgba(21, 101, 192, 0.10);
   color: #1565C0;
-  border: 2rpx solid #1565C0;
+  border: none;
 }
 .success-btn.btn-secondary::after { border: none; }

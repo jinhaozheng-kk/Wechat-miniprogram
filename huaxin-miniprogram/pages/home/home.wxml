@@ -1,73 +1,135 @@
-<view class="page-container">
+<view class="home">
 
-  <!-- 轮播Banner -->
-  <swiper
-    class="banner-swiper"
-    autoplay circular
-    interval="4500"
-    duration="700"
-    easing-function="easeInOutCubic"
-    indicator-dots
-    indicator-color="rgba(255,255,255,0.35)"
-    indicator-active-color="#ffffff"
-    bindchange="onBannerChange"
-  >
-    <swiper-item wx:for="{{banners}}" wx:key="index">
-      <view class="banner-slide" style="background:{{item.bg}}">
-        <!-- 背景装饰圆 -->
-        <view class="banner-deco-1"></view>
-        <view class="banner-deco-2"></view>
-        <!-- 文字 -->
-        <view class="banner-content">
-          <view class="banner-tag">{{item.tag}}</view>
-          <view class="banner-title">{{item.title}}</view>
-          <view class="banner-subtitle">{{item.subtitle}}</view>
-        </view>
-        <!-- 产品图 -->
-        <image class="banner-product-img" src="{{item.image}}" mode="aspectFit" />
-      </view>
-    </swiper-item>
-  </swiper>
+  <!-- ====== 沉浸式深色 Hero（含状态栏） ====== -->
+  <view class="hero" style="padding-top:{{statusBarHeight + 12}}px">
 
-  <!-- 联系电话条 -->
-  <view class="phone-bar" bindtap="callPhone">
-    <view class="phone-icon-wrap">
-      <text class="phone-icon">☎</text>
+    <!-- 品牌行 -->
+    <view class="brand-row reveal">
+      <view class="brand-mark">华信</view>
+      <text class="brand-name">HUAXIN · 华信通讯</text>
     </view>
-    <view class="phone-info">
-      <text class="phone-label">联系我们</text>
-      <text class="phone-number">{{company.phone}}</text>
-    </view>
-    <text class="phone-tip">点击拨打</text>
-  </view>
 
-  <!-- 产品分类 -->
-  <view class="section-title">产品分类</view>
-  <view class="category-grid">
-    <view
-      wx:for="{{categories}}"
-      wx:key="id"
-      class="category-item"
-      bindtap="goToCategory"
-      data-id="{{item.id}}"
+    <!-- 编辑部式大标题 -->
+    <view class="hero-copy reveal reveal-d1">
+      <view class="hero-eyebrow">建筑电气配电箱制造商</view>
+      <view class="hero-title">精工每一只</view>
+      <view class="hero-title accent">箱体</view>
+      <view class="hero-sub">14 大系列 · 工厂直供 · 支持非标定制</view>
+    </view>
+
+    <!-- 双 CTA -->
+    <view class="hero-actions reveal reveal-d2">
+      <view class="hero-btn solid" bindtap="goToProducts">浏览产品</view>
+      <view class="hero-btn ghost" bindtap="goToInquiry">快速询价</view>
+    </view>
+
+    <!-- 精选卡片（peek 滑动） -->
+    <swiper
+      class="featured-swiper reveal reveal-d3"
+      previous-margin="40rpx"
+      next-margin="72rpx"
+      circular="{{false}}"
+      duration="400"
+      easing-function="easeInOutCubic"
+      bindchange="onFeaturedChange"
     >
-      <view class="cat-img-wrap">
-        <image class="cat-img" src="{{item.image}}" mode="aspectFit" lazy-load />
-      </view>
-      <text class="cat-name">{{item.name}}</text>
-      <text class="cat-count" wx:if="{{item.productCount > 0}}">{{item.productCount}}款</text>
-      <text class="cat-count preparing" wx:else>整理中</text>
+      <swiper-item wx:for="{{featured}}" wx:key="index" class="featured-item">
+        <view class="featured-card" style="background:{{item.bg}}" bindtap="onFeaturedTap" data-index="{{index}}">
+          <view class="featured-text">
+            <view class="featured-tag">{{item.tag}}</view>
+            <view class="featured-title">{{item.title}}</view>
+            <view class="featured-sub">{{item.subtitle}}</view>
+          </view>
+          <image class="featured-img" src="{{item.image}}" mode="aspectFit" />
+        </view>
+      </swiper-item>
+    </swiper>
+    <view class="featured-dots">
+      <view
+        wx:for="{{featured}}"
+        wx:key="index"
+        class="featured-dot {{currentFeatured === index ? 'on' : ''}}"
+      ></view>
     </view>
+
+    <!-- 弧形过渡到浅色区 -->
+    <view class="hero-curve"></view>
   </view>
 
-  <!-- 快捷询价 -->
-  <view class="inquiry-card" bindtap="goToInquiry">
-    <view class="inquiry-deco"></view>
-    <view class="inquiry-left">
-      <text class="inquiry-title">需要报价？</text>
-      <text class="inquiry-sub">{{company.workingHours}}</text>
+  <!-- ====== 浅色内容区 ====== -->
+  <view class="body">
+
+    <!-- 分类 Bento 网格 -->
+    <view class="section-title">产品分类</view>
+    <view class="section-caption">每一类，都为工程现场而设计</view>
+
+    <view class="bento" wx:if="{{bentoHero}}">
+
+      <!-- 主宫格：通栏 -->
+      <view class="bento-hero card-tap" bindtap="goToCategory" data-id="{{bentoHero.id}}">
+        <view class="bento-hero-text">
+          <view class="bento-name-lg">{{bentoHero.name}}</view>
+          <view class="bento-count">{{bentoHero.productCount > 0 ? bentoHero.productCount + ' 款产品' : '规格整理中'}}</view>
+          <view class="bento-go">了解 ›</view>
+        </view>
+        <image class="bento-hero-img" src="{{bentoHero.image}}" mode="aspectFit" lazy-load />
+      </view>
+
+      <!-- 两个半宽方格 -->
+      <view class="bento-row">
+        <view
+          wx:for="{{bentoHalves}}"
+          wx:key="id"
+          class="bento-half card-tap"
+          bindtap="goToCategory"
+          data-id="{{item.id}}"
+        >
+          <view class="bento-name">{{item.name}}</view>
+          <view class="bento-count">{{item.productCount > 0 ? item.productCount + ' 款' : '整理中'}}</view>
+          <image class="bento-half-img" src="{{item.image}}" mode="aspectFit" lazy-load />
+        </view>
+      </view>
+
+      <!-- 三个小格 -->
+      <view class="bento-row">
+        <view
+          wx:for="{{bentoSmalls}}"
+          wx:key="id"
+          class="bento-small card-tap"
+          bindtap="goToCategory"
+          data-id="{{item.id}}"
+        >
+          <image class="bento-small-img" src="{{item.image}}" mode="aspectFit" lazy-load />
+          <view class="bento-name-sm">{{item.name}}</view>
+        </view>
+      </view>
+
+      <!-- 查看全部 -->
+      <view class="bento-all card-tap" bindtap="goToProducts">
+        <text>查看全部 {{totalCategories}} 个系列</text>
+        <text class="bento-all-arrow">→</text>
+      </view>
+
     </view>
-    <view class="inquiry-btn">立即询价 ›</view>
+
+    <!-- 联系电话（极简行） -->
+    <view class="phone-row card-tap" bindtap="callPhone">
+      <view class="phone-left">
+        <text class="phone-label">销售热线</text>
+        <text class="phone-number">{{company.phone}}</text>
+      </view>
+      <view class="phone-cta">拨打</view>
+    </view>
+
+    <!-- 快捷询价（深色反差卡） -->
+    <view class="inquiry-card card-tap" bindtap="goToInquiry">
+      <view class="inquiry-left">
+        <text class="inquiry-title">需要报价？</text>
+        <text class="inquiry-sub">{{company.workingHours}}</text>
+      </view>
+      <view class="inquiry-btn">立即询价</view>
+    </view>
+
   </view>
 
 </view>

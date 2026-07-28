@@ -1,4 +1,5 @@
 const api = require('../../utils/api');
+const share = require('../../utils/share');
 
 Page({
   data: {
@@ -13,6 +14,7 @@ Page({
   _searchTimer: null,
 
   onLoad() {
+    share.enableShareMenu();
     this.loadCategories();
   },
 
@@ -68,5 +70,19 @@ Page({
   goToDetail(e) {
     const id = e.currentTarget.dataset.id;
     wx.navigateTo({ url: `/pages/detail/detail?id=${id}` });
+  },
+
+  // 非标定制 → 询价页（定制模式，经 globalData 中转标记）
+  goToInquiry() {
+    getApp().globalData.inquiryCustomMode = true;
+    wx.switchTab({ url: '/pages/inquiry/inquiry' });
+  },
+
+  onShareAppMessage() {
+    return share.buildProductsShare();
+  },
+
+  onShareTimeline() {
+    return share.buildProductsTimeline();
   },
 });

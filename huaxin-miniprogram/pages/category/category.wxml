@@ -1,13 +1,10 @@
 <view class="page-container">
 
-  <!-- 分类头部 -->
-  <view wx:if="{{category}}" class="cat-header" style="background:{{category.bgColor}}">
-    <view class="cat-header-icon" style="color:{{category.color}}">{{category.icon}}</view>
-    <view class="cat-header-info">
-      <view class="cat-header-name" style="color:{{category.color}}">{{category.name}}</view>
-      <view class="cat-header-desc">{{category.description}}</view>
-      <view class="cat-header-count" style="color:{{category.color}}">共 {{products.length}} 款产品</view>
-    </view>
+  <!-- 分类页头：编辑部式大标题 -->
+  <view wx:if="{{category}}" class="cat-head reveal">
+    <view class="cat-head-title">{{category.name}}</view>
+    <view class="cat-head-desc">{{category.description}}</view>
+    <view class="cat-head-count">共 {{products.length}} 款产品</view>
   </view>
 
   <!-- 无产品提示 -->
@@ -19,27 +16,27 @@
 
   <!-- 产品列表 -->
   <block wx:else>
-    <view wx:for="{{products}}" wx:key="id" class="product-card card">
-
-      <!-- 产品缩略图 -->
-      <view
-        class="product-thumb"
-        style="background:{{category.bgColor}}"
-        bindtap="goToDetail"
-        data-id="{{item.id}}"
-      >
+    <view
+      wx:for="{{products}}"
+      wx:key="id"
+      class="product-card card card-tap reveal {{index < 6 ? 'reveal-d' + (index + 1) : 'reveal-d6'}}"
+      bindtap="goToDetail"
+      data-id="{{item.id}}"
+    >
+      <!-- 产品图：透明底悬浮 -->
+      <view class="product-thumb">
         <image
           wx:if="{{item.images && item.images.length}}"
           src="{{item.images[0]}}"
-          mode="aspectFill"
+          mode="aspectFit"
           class="thumb-img"
           lazy-load
         />
-        <text wx:else class="product-thumb-text" style="color:{{category.color}}">{{category.icon}}</text>
+        <text wx:else class="product-thumb-text">{{category.icon}}</text>
       </view>
 
       <!-- 产品信息 -->
-      <view class="product-body" bindtap="goToDetail" data-id="{{item.id}}">
+      <view class="product-body">
         <view class="product-name">{{item.name}}</view>
         <view class="product-model">{{item.model}}</view>
         <view class="product-specs-preview">
@@ -50,15 +47,7 @@
             class="spec-preview-item"
           >{{item.key}}：{{item.value}}</text>
         </view>
-        <view class="product-tags">
-          <text
-            wx:for="{{item.tags}}"
-            wx:key="*this"
-            wx:for-item="tag"
-            wx:if="{{index < 3}}"
-            class="tag"
-          >{{tag}}</text>
-        </view>
+        <view class="product-go">查看详情 ›</view>
       </view>
 
     </view>

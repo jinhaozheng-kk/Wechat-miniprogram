@@ -44,22 +44,26 @@ public class InquiryService {
         if (!StringUtils.hasText(req.getContactPhone()) || !PHONE.matcher(req.getContactPhone()).matches()) {
             throw new BusinessException("联系电话格式不正确");
         }
-        if (req.getProductIds() == null || req.getProductIds().isEmpty()) {
-            throw new BusinessException("请至少选择一个询价产品");
+        // 非标定制单允许不选产品，但必须有需求描述；普通询价必须选产品
+        boolean hasProducts = req.getProductIds() != null && !req.getProductIds().isEmpty();
+        if (!hasProducts && !StringUtils.hasText(req.getRequirement())) {
+            throw new BusinessException("请选择询价产品，或填写定制需求");
         }
 
         // 把产品名称冗余进表，方便后台列表展示（避免每次再 join）
         List<String> names = new ArrayList<>();
-        for (String pid : req.getProductIds()) {
-            Product p = productMapper.findById(pid);
-            if (p != null) {
-                names.add(p.getName());
+        if (hasProducts) {
+            for (String pid : req.getProductIds()) {
+                Product p = productMapper.findById(pid);
+                if (p != null) {
+                    names.add(p.getName());
+                }
             }
         }
 
         Inquiry inquiry = new Inquiry();
-        inquiry.setProductIds(new ArrayList<>(req.getProductIds()));
-        inquiry.setProductNames(String.join(",", names));
+        inquiry.setProductIds(hasProducts ? new ArrayList<>(req.getProductIds()) : new ArrayList<>());
+        inquiry.setProductNames(hasProducts ? String.join(",", names) : "非标定制");
         inquiry.setContactName(req.getContactName());
         inquiry.setContactPhone(req.getContactPhone());
         inquiry.setProjectName(req.getProjectName());

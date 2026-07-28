@@ -8,7 +8,7 @@ const products = [
     id: 'gx-001', categoryId: 'guang-xian',
     name: '光纤入户信息箱 250×300×120 塑面',
     model: '250×300×120mm',
-    images: ['/images/guang-xian/1.png', '/images/guang-xian/2.jpg'],
+    images: ['/images/guang-xian/1.jpg', '/images/guang-xian/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '250×300×120 mm' },
       { key: '面板类型', value: '塑面' },
@@ -22,7 +22,7 @@ const products = [
     id: 'gx-002', categoryId: 'guang-xian',
     name: '光纤入户信息箱 300×350×120 塑面',
     model: '300×350×120mm',
-    images: ['/images/guang-xian/1.png', '/images/guang-xian/2.jpg'],
+    images: ['/images/guang-xian/1.jpg', '/images/guang-xian/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '300×350×120 mm' },
       { key: '面板类型', value: '塑面' },
@@ -36,7 +36,7 @@ const products = [
     id: 'gx-003', categoryId: 'guang-xian',
     name: '光纤入户信息箱 300×400×120 塑面',
     model: '300×400×120mm',
-    images: ['/images/guang-xian/1.png', '/images/guang-xian/2.jpg'],
+    images: ['/images/guang-xian/1.jpg', '/images/guang-xian/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '300×400×120 mm' },
       { key: '面板类型', value: '塑面' },
@@ -50,7 +50,7 @@ const products = [
     id: 'gx-004', categoryId: 'guang-xian',
     name: '光纤入户信息箱 250×300×120 铁面',
     model: '250×300×120mm',
-    images: ['/images/guang-xian/1.png', '/images/guang-xian/2.jpg'],
+    images: ['/images/guang-xian/1.jpg', '/images/guang-xian/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '250×300×120 mm' },
       { key: '面板类型', value: '铁面' },
@@ -63,7 +63,7 @@ const products = [
     id: 'gx-005', categoryId: 'guang-xian',
     name: '光纤入户信息箱 300×350×120 铁面',
     model: '300×350×120mm',
-    images: ['/images/guang-xian/1.png', '/images/guang-xian/2.jpg'],
+    images: ['/images/guang-xian/1.jpg', '/images/guang-xian/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '300×350×120 mm' },
       { key: '面板类型', value: '铁面' },
@@ -76,7 +76,7 @@ const products = [
     id: 'gx-006', categoryId: 'guang-xian',
     name: '光纤入户信息箱 300×400×120 铁面',
     model: '300×400×120mm',
-    images: ['/images/guang-xian/1.png', '/images/guang-xian/2.jpg'],
+    images: ['/images/guang-xian/1.jpg', '/images/guang-xian/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '300×400×120 mm' },
       { key: '面板类型', value: '铁面' },
@@ -91,7 +91,7 @@ const products = [
     id: 'xf-001', categoryId: 'xiao-fang',
     name: '明装消防端子箱 200×200×80',
     model: '200×200×80mm',
-    images: ['/images/xiao-fang/1.png', '/images/xiao-fang/2.png', '/images/xiao-fang/3.png'],
+    images: ['/images/xiao-fang/1.jpg', '/images/xiao-fang/2.jpg', '/images/xiao-fang/3.jpg'],
     specs: [
       { key: '规格尺寸', value: '200×200×80 mm' },
       { key: '箱体/门板/底板厚', value: '0.5 / 0.6 / 0.6 mm' },
@@ -104,7 +104,7 @@ const products = [
     id: 'xf-002', categoryId: 'xiao-fang',
     name: '明装消防端子箱 300×200×80',
     model: '300×200×80mm',
-    images: ['/images/xiao-fang/1.png', '/images/xiao-fang/2.png', '/images/xiao-fang/3.png'],
+    images: ['/images/xiao-fang/1.jpg', '/images/xiao-fang/2.jpg', '/images/xiao-fang/3.jpg'],
     specs: [
       { key: '规格尺寸', value: '300×200×80 mm' },
       { key: '箱体/门板/底板厚', value: '0.5 / 0.6 / 0.6 mm' },
@@ -117,7 +117,7 @@ const products = [
     id: 'xf-003', categoryId: 'xiao-fang',
     name: '明装消防端子箱 300×250×100',
     model: '300×250×100mm',
-    images: ['/images/xiao-fang/1.png', '/images/xiao-fang/2.png', '/images/xiao-fang/3.png'],
+    images: ['/images/xiao-fang/1.jpg', '/images/xiao-fang/2.jpg', '/images/xiao-fang/3.jpg'],
     specs: [
       { key: '规格尺寸', value: '300×250×100 mm' },
       { key: '箱体/门板/底板厚', value: '0.5 / 0.6 / 0.6 mm' },
@@ -130,7 +130,7 @@ const products = [
     id: 'xf-004', categoryId: 'xiao-fang',
     name: '明装消防端子箱 300×300×100',
     model: '300×300×100mm',
-    images: ['/images/xiao-fang/1.png', '/images/xiao-fang/2.png', '/images/xiao-fang/3.png'],
+    images: ['/images/xiao-fang/1.jpg', '/images/xiao-fang/2.jpg', '/images/xiao-fang/3.jpg'],
     specs: [
       { key: '规格尺寸', value: '300×300×100 mm' },
       { key: '箱体/门板/底板厚', value: '0.5 / 0.6 / 0.6 mm' },
@@ -143,7 +143,7 @@ const products = [
     id: 'xf-005', categoryId: 'xiao-fang',
     name: '明装消防端子箱 400×300×100',
     model: '400×300×100mm',
-    images: ['/images/xiao-fang/1.png', '/images/xiao-fang/2.png', '/images/xiao-fang/3.png'],
+    images: ['/images/xiao-fang/1.jpg', '/images/xiao-fang/2.jpg', '/images/xiao-fang/3.jpg'],
     specs: [
       { key: '规格尺寸', value: '400×300×100 mm' },
       { key: '箱体/门板/底板厚', value: '0.5 / 0.6 / 0.6 mm' },
@@ -156,7 +156,7 @@ const products = [
     id: 'xf-006', categoryId: 'xiao-fang',
     name: '明装消防端子箱 500×400×100',
     model: '500×400×100mm',
-    images: ['/images/xiao-fang/1.png', '/images/xiao-fang/2.png', '/images/xiao-fang/3.png'],
+    images: ['/images/xiao-fang/1.jpg', '/images/xiao-fang/2.jpg', '/images/xiao-fang/3.jpg'],
     specs: [
       { key: '规格尺寸', value: '500×400×100 mm' },
       { key: '箱体/门板/底板厚', value: '0.5 / 0.6 / 0.6 mm' },
@@ -169,7 +169,7 @@ const products = [
     id: 'xf-007', categoryId: 'xiao-fang',
     name: '明装消防端子箱 600×500×100',
     model: '600×500×100mm',
-    images: ['/images/xiao-fang/1.png', '/images/xiao-fang/2.png', '/images/xiao-fang/3.png'],
+    images: ['/images/xiao-fang/1.jpg', '/images/xiao-fang/2.jpg', '/images/xiao-fang/3.jpg'],
     specs: [
       { key: '规格尺寸', value: '600×500×100 mm' },
       { key: '箱体/门板/底板厚', value: '0.6 / 0.6 / 0.6 mm' },
@@ -182,7 +182,7 @@ const products = [
     id: 'xf-008', categoryId: 'xiao-fang',
     name: '明装消防端子箱 800×600×100',
     model: '800×600×100mm',
-    images: ['/images/xiao-fang/1.png', '/images/xiao-fang/2.png', '/images/xiao-fang/3.png'],
+    images: ['/images/xiao-fang/1.jpg', '/images/xiao-fang/2.jpg', '/images/xiao-fang/3.jpg'],
     specs: [
       { key: '规格尺寸', value: '800×600×100 mm' },
       { key: '箱体/门板/底板厚', value: '0.6 / 0.7 / 0.7 mm' },
@@ -197,7 +197,7 @@ const products = [
     id: 'dmt-001', categoryId: 'duo-mei-ti',
     name: '多媒体信息箱 200×300×100 (0.4/0.8)',
     model: '200×300×100mm',
-    images: ['/images/duo-mei-ti/1.png', '/images/duo-mei-ti/2.jpg'],
+    images: ['/images/duo-mei-ti/1.jpg', '/images/duo-mei-ti/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '200×300×100 mm' },
       { key: '箱体/面板厚', value: '0.4 / 0.8 mm' },
@@ -210,7 +210,7 @@ const products = [
     id: 'dmt-002', categoryId: 'duo-mei-ti',
     name: '多媒体信息箱 200×300×100 (0.5/1.0)',
     model: '200×300×100mm',
-    images: ['/images/duo-mei-ti/1.png', '/images/duo-mei-ti/2.jpg'],
+    images: ['/images/duo-mei-ti/1.jpg', '/images/duo-mei-ti/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '200×300×100 mm' },
       { key: '箱体/面板厚', value: '0.5 / 1.0 mm' },
@@ -223,7 +223,7 @@ const products = [
     id: 'dmt-003', categoryId: 'duo-mei-ti',
     name: '多媒体信息箱 200×300×100 (0.6/1.0)',
     model: '200×300×100mm',
-    images: ['/images/duo-mei-ti/1.png', '/images/duo-mei-ti/2.jpg'],
+    images: ['/images/duo-mei-ti/1.jpg', '/images/duo-mei-ti/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '200×300×100 mm' },
       { key: '箱体/面板厚', value: '0.6 / 1.0 mm' },
@@ -237,7 +237,7 @@ const products = [
     id: 'dmt-004', categoryId: 'duo-mei-ti',
     name: '多媒体信息箱 200×300×100 (0.8/1.0)',
     model: '200×300×100mm',
-    images: ['/images/duo-mei-ti/1.png', '/images/duo-mei-ti/2.jpg'],
+    images: ['/images/duo-mei-ti/1.jpg', '/images/duo-mei-ti/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '200×300×100 mm' },
       { key: '箱体/面板厚', value: '0.8 / 1.0 mm' },
@@ -251,7 +251,7 @@ const products = [
     id: 'dmt-005', categoryId: 'duo-mei-ti',
     name: '多媒体信息箱 250×300×100 (0.6/0.8)',
     model: '250×300×100mm',
-    images: ['/images/duo-mei-ti/1.png', '/images/duo-mei-ti/2.jpg'],
+    images: ['/images/duo-mei-ti/1.jpg', '/images/duo-mei-ti/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '250×300×100 mm' },
       { key: '箱体/面板厚', value: '0.6 / 0.8 mm' },
@@ -264,7 +264,7 @@ const products = [
     id: 'dmt-006', categoryId: 'duo-mei-ti',
     name: '多媒体信息箱 250×300×100 (0.8/1.0)',
     model: '250×300×100mm',
-    images: ['/images/duo-mei-ti/1.png', '/images/duo-mei-ti/2.jpg'],
+    images: ['/images/duo-mei-ti/1.jpg', '/images/duo-mei-ti/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '250×300×100 mm' },
       { key: '箱体/面板厚', value: '0.8 / 1.0 mm' },
@@ -277,7 +277,7 @@ const products = [
     id: 'dmt-007', categoryId: 'duo-mei-ti',
     name: '多媒体信息箱 280×380×90 (0.5/0.8)',
     model: '280×380×90mm',
-    images: ['/images/duo-mei-ti/1.png', '/images/duo-mei-ti/2.jpg'],
+    images: ['/images/duo-mei-ti/1.jpg', '/images/duo-mei-ti/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '280×380×90 mm' },
       { key: '箱体/面板厚', value: '0.5 / 0.8 mm' },
@@ -290,7 +290,7 @@ const products = [
     id: 'dmt-008', categoryId: 'duo-mei-ti',
     name: '多媒体信息箱 300×400×100 (0.4/0.8)',
     model: '300×400×100mm',
-    images: ['/images/duo-mei-ti/1.png', '/images/duo-mei-ti/2.jpg'],
+    images: ['/images/duo-mei-ti/1.jpg', '/images/duo-mei-ti/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '300×400×100 mm' },
       { key: '箱体/面板厚', value: '0.4 / 0.8 mm' },
@@ -303,7 +303,7 @@ const products = [
     id: 'dmt-009', categoryId: 'duo-mei-ti',
     name: '多媒体信息箱 300×400×100 (0.5/0.8)',
     model: '300×400×100mm',
-    images: ['/images/duo-mei-ti/1.png', '/images/duo-mei-ti/2.jpg'],
+    images: ['/images/duo-mei-ti/1.jpg', '/images/duo-mei-ti/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '300×400×100 mm' },
       { key: '箱体/面板厚', value: '0.5 / 0.8 mm' },
@@ -317,7 +317,7 @@ const products = [
     id: 'dmt-010', categoryId: 'duo-mei-ti',
     name: '多媒体信息箱 400×500×100 (0.5/1.0)',
     model: '400×500×100mm',
-    images: ['/images/duo-mei-ti/1.png', '/images/duo-mei-ti/2.jpg'],
+    images: ['/images/duo-mei-ti/1.jpg', '/images/duo-mei-ti/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '400×500×100 mm' },
       { key: '箱体/面板厚', value: '0.5 / 1.0 mm' },
@@ -330,7 +330,7 @@ const products = [
     id: 'dmt-011', categoryId: 'duo-mei-ti',
     name: '多媒体信息箱 500×600×120 (0.6/1.0)',
     model: '500×600×120mm',
-    images: ['/images/duo-mei-ti/1.png', '/images/duo-mei-ti/2.jpg'],
+    images: ['/images/duo-mei-ti/1.jpg', '/images/duo-mei-ti/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '500×600×120 mm' },
       { key: '箱体/面板厚', value: '0.6 / 1.0 mm' },
@@ -343,7 +343,7 @@ const products = [
     id: 'dmt-012', categoryId: 'duo-mei-ti',
     name: '多媒体信息箱 600×800×120 (0.8/1.0)',
     model: '600×800×120mm',
-    images: ['/images/duo-mei-ti/1.png', '/images/duo-mei-ti/2.jpg'],
+    images: ['/images/duo-mei-ti/1.jpg', '/images/duo-mei-ti/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '600×800×120 mm' },
       { key: '箱体/面板厚', value: '0.8 / 1.0 mm' },
@@ -358,7 +358,7 @@ const products = [
     id: 'ddw-001', categoryId: 'deng-dian-wei',
     name: 'TD-28大型等电位端子箱 300×200×120',
     model: 'TD28-大型',
-    images: ['/images/deng-dian-wei/1.png', '/images/deng-dian-wei/2.jpg'],
+    images: ['/images/deng-dian-wei/1.jpg', '/images/deng-dian-wei/2.jpg'],
     specs: [
       { key: '型号', value: 'TD28 大型' },
       { key: '规格尺寸', value: '300×200×120 mm' },
@@ -372,7 +372,7 @@ const products = [
     id: 'ddw-002', categoryId: 'deng-dian-wei',
     name: 'TD-28中型等电位端子箱 180×100×60',
     model: 'TD28-中型',
-    images: ['/images/deng-dian-wei/1.png', '/images/deng-dian-wei/2.jpg'],
+    images: ['/images/deng-dian-wei/1.jpg', '/images/deng-dian-wei/2.jpg'],
     specs: [
       { key: '型号', value: 'TD28 中型' },
       { key: '规格尺寸', value: '180×100×60 mm' },
@@ -386,7 +386,7 @@ const products = [
     id: 'ddw-003', categoryId: 'deng-dian-wei',
     name: 'TD-28小型等电位端子箱 155×75×50',
     model: 'TD28-小型',
-    images: ['/images/deng-dian-wei/1.png', '/images/deng-dian-wei/2.jpg'],
+    images: ['/images/deng-dian-wei/1.jpg', '/images/deng-dian-wei/2.jpg'],
     specs: [
       { key: '型号', value: 'TD28 小型' },
       { key: '规格尺寸', value: '155×75×50 mm' },
@@ -402,7 +402,7 @@ const products = [
     id: 'pz-001', categoryId: 'pz30',
     name: 'PZ30回路箱 6回路',
     model: '6#',
-    images: ['/images/pz30/1.png', '/images/pz30/2.jpg'],
+    images: ['/images/pz30/1.jpg', '/images/pz30/2.jpg'],
     specs: [
       { key: '回路数', value: '6 回路' },
       { key: '暗装板厚', value: '0.8 mm' },
@@ -415,7 +415,7 @@ const products = [
     id: 'pz-002', categoryId: 'pz30',
     name: 'PZ30回路箱 8回路',
     model: '8#',
-    images: ['/images/pz30/1.png', '/images/pz30/2.jpg'],
+    images: ['/images/pz30/1.jpg', '/images/pz30/2.jpg'],
     specs: [
       { key: '回路数', value: '8 回路' },
       { key: '暗装板厚', value: '0.8 mm' },
@@ -428,7 +428,7 @@ const products = [
     id: 'pz-003', categoryId: 'pz30',
     name: 'PZ30回路箱 10回路',
     model: '10#',
-    images: ['/images/pz30/1.png', '/images/pz30/2.jpg'],
+    images: ['/images/pz30/1.jpg', '/images/pz30/2.jpg'],
     specs: [
       { key: '回路数', value: '10 回路' },
       { key: '暗装板厚', value: '0.8 mm' },
@@ -441,7 +441,7 @@ const products = [
     id: 'pz-004', categoryId: 'pz30',
     name: 'PZ30回路箱 12回路',
     model: '12#',
-    images: ['/images/pz30/1.png', '/images/pz30/2.jpg'],
+    images: ['/images/pz30/1.jpg', '/images/pz30/2.jpg'],
     specs: [
       { key: '回路数', value: '12 回路' },
       { key: '暗装板厚', value: '0.8 mm' },
@@ -454,7 +454,7 @@ const products = [
     id: 'pz-005', categoryId: 'pz30',
     name: 'PZ30回路箱 15回路',
     model: '15#',
-    images: ['/images/pz30/1.png', '/images/pz30/2.jpg'],
+    images: ['/images/pz30/1.jpg', '/images/pz30/2.jpg'],
     specs: [
       { key: '回路数', value: '15 回路' },
       { key: '暗装板厚', value: '0.8 mm' },
@@ -467,7 +467,7 @@ const products = [
     id: 'pz-006', categoryId: 'pz30',
     name: 'PZ30回路箱 18回路',
     model: '18#',
-    images: ['/images/pz30/1.png', '/images/pz30/2.jpg'],
+    images: ['/images/pz30/1.jpg', '/images/pz30/2.jpg'],
     specs: [
       { key: '回路数', value: '18 回路' },
       { key: '暗装板厚', value: '0.8 mm' },
@@ -480,7 +480,7 @@ const products = [
     id: 'pz-007', categoryId: 'pz30',
     name: 'PZ30回路箱 20回路',
     model: '20#',
-    images: ['/images/pz30/1.png', '/images/pz30/2.jpg'],
+    images: ['/images/pz30/1.jpg', '/images/pz30/2.jpg'],
     specs: [
       { key: '回路数', value: '20 回路' },
       { key: '暗装板厚', value: '0.8 mm' },
@@ -493,7 +493,7 @@ const products = [
     id: 'pz-008', categoryId: 'pz30',
     name: 'PZ30回路箱 24回路',
     model: '24#',
-    images: ['/images/pz30/1.png', '/images/pz30/2.jpg'],
+    images: ['/images/pz30/1.jpg', '/images/pz30/2.jpg'],
     specs: [
       { key: '回路数', value: '24 回路' },
       { key: '暗装板厚', value: '0.8 mm（双排）' },
@@ -506,7 +506,7 @@ const products = [
     id: 'pz-009', categoryId: 'pz30',
     name: 'PZ30回路箱 30回路',
     model: '30#',
-    images: ['/images/pz30/1.png', '/images/pz30/2.jpg'],
+    images: ['/images/pz30/1.jpg', '/images/pz30/2.jpg'],
     specs: [
       { key: '回路数', value: '30 回路' },
       { key: '暗装板厚', value: '0.8 mm' },
@@ -519,7 +519,7 @@ const products = [
     id: 'pz-010', categoryId: 'pz30',
     name: 'PZ30回路箱 36回路',
     model: '36#',
-    images: ['/images/pz30/1.png', '/images/pz30/2.jpg'],
+    images: ['/images/pz30/1.jpg', '/images/pz30/2.jpg'],
     specs: [
       { key: '回路数', value: '36 回路' },
       { key: '暗装板厚', value: '0.8 mm' },
@@ -636,7 +636,7 @@ const products = [
     id: 'bxpd-001', categoryId: 'hu-wai-bx',
     name: '不锈钢配电箱 250×300×150',
     model: '250×300×150mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '250×300×150 mm' },
       { key: '材质', value: '201不锈钢 / 304不锈钢 可选' },
@@ -650,7 +650,7 @@ const products = [
     id: 'bxpd-002', categoryId: 'hu-wai-bx',
     name: '不锈钢配电箱 300×400×160',
     model: '300×400×160mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '300×400×160 mm' },
       { key: '材质', value: '201不锈钢 / 304不锈钢 可选' },
@@ -664,7 +664,7 @@ const products = [
     id: 'bxpd-003', categoryId: 'hu-wai-bx',
     name: '不锈钢配电箱 400×500×180',
     model: '400×500×180mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '400×500×180 mm' },
       { key: '材质', value: '201不锈钢 / 304不锈钢 可选' },
@@ -678,7 +678,7 @@ const products = [
     id: 'bxpd-004', categoryId: 'hu-wai-bx',
     name: '不锈钢配电箱 400×500×200',
     model: '400×500×200mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '400×500×200 mm' },
       { key: '材质', value: '201不锈钢 / 304不锈钢 可选' },
@@ -692,7 +692,7 @@ const products = [
     id: 'bxpd-005', categoryId: 'hu-wai-bx',
     name: '不锈钢配电箱 500×600×180',
     model: '500×600×180mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '500×600×180 mm' },
       { key: '材质', value: '201不锈钢 / 304不锈钢 可选' },
@@ -706,7 +706,7 @@ const products = [
     id: 'bxpd-006', categoryId: 'hu-wai-bx',
     name: '不锈钢配电箱 500×600×200',
     model: '500×600×200mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '500×600×200 mm' },
       { key: '材质', value: '201不锈钢 / 304不锈钢 可选' },
@@ -720,7 +720,7 @@ const products = [
     id: 'bxpd-007', categoryId: 'hu-wai-bx',
     name: '不锈钢配电箱 600×800×200',
     model: '600×800×200mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '600×800×200 mm' },
       { key: '材质', value: '201不锈钢 / 304不锈钢 可选' },
@@ -734,7 +734,7 @@ const products = [
     id: 'bxpd-008', categoryId: 'hu-wai-bx',
     name: '不锈钢配电箱 600×800×250 (单/双门)',
     model: '600×800×250mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '600×800×250 mm' },
       { key: '材质', value: '201不锈钢' },
@@ -748,7 +748,7 @@ const products = [
     id: 'bxpd-009', categoryId: 'hu-wai-bx',
     name: '不锈钢配电箱 800×1000×200',
     model: '800×1000×200mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '800×1000×200 mm' },
       { key: '材质', value: '201不锈钢' },
@@ -761,7 +761,7 @@ const products = [
     id: 'bxpd-010', categoryId: 'hu-wai-bx',
     name: '不锈钢配电箱 800×1000×250',
     model: '800×1000×250mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '800×1000×250 mm' },
       { key: '材质', value: '201不锈钢' },
@@ -774,7 +774,7 @@ const products = [
     id: 'bxpd-011', categoryId: 'hu-wai-bx',
     name: '不锈钢配电箱 600×1000×350',
     model: '600×1000×350mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '600×1000×350 mm' },
       { key: '材质', value: '201不锈钢' },
@@ -787,7 +787,7 @@ const products = [
     id: 'bxpd-012', categoryId: 'hu-wai-bx',
     name: '不锈钢配电箱 600×1200×350',
     model: '600×1200×350mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '600×1200×350 mm' },
       { key: '材质', value: '201不锈钢' },
@@ -800,7 +800,7 @@ const products = [
     id: 'bxpd-013', categoryId: 'hu-wai-bx',
     name: '不锈钢配电箱 700×1500×370',
     model: '700×1500×370mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '700×1500×370 mm' },
       { key: '材质', value: '201不锈钢' },
@@ -813,7 +813,7 @@ const products = [
     id: 'bxpd-014', categoryId: 'hu-wai-bx',
     name: '不锈钢配电箱 700×1700×370',
     model: '700×1700×370mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '700×1700×370 mm' },
       { key: '材质', value: '201不锈钢' },
@@ -826,7 +826,7 @@ const products = [
     id: 'bxpd-015', categoryId: 'hu-wai-bx',
     name: '不锈钢配电箱 800×1800×400',
     model: '800×1800×400mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '800×1800×400 mm' },
       { key: '材质', value: '201不锈钢' },
@@ -840,7 +840,7 @@ const products = [
     id: 'bxgq-001', categoryId: 'hu-wai-bx',
     name: '不锈钢户外挂墙箱 300×250×160',
     model: '300×250×160mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '300×250×160 mm' },
       { key: '材质', value: '201不锈钢' },
@@ -854,7 +854,7 @@ const products = [
     id: 'bxgq-002', categoryId: 'hu-wai-bx',
     name: '不锈钢户外挂墙箱 300×400×160',
     model: '300×400×160mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '300×400×160 mm' },
       { key: '材质', value: '201不锈钢' },
@@ -868,7 +868,7 @@ const products = [
     id: 'bxgq-003', categoryId: 'hu-wai-bx',
     name: '不锈钢户外挂墙箱 400×500×180',
     model: '400×500×180mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '400×500×180 mm' },
       { key: '材质', value: '201不锈钢' },
@@ -882,7 +882,7 @@ const products = [
     id: 'bxgq-004', categoryId: 'hu-wai-bx',
     name: '不锈钢户外挂墙箱 500×600×200',
     model: '500×600×200mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '500×600×200 mm' },
       { key: '材质', value: '201不锈钢' },
@@ -896,7 +896,7 @@ const products = [
     id: 'bxgq-005', categoryId: 'hu-wai-bx',
     name: '不锈钢户外挂墙箱 600×800×200',
     model: '600×800×200mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '600×800×200 mm' },
       { key: '材质', value: '201不锈钢' },
@@ -910,7 +910,7 @@ const products = [
     id: 'bxgq-006', categoryId: 'hu-wai-bx',
     name: '不锈钢户外挂墙箱 800×1000×250',
     model: '800×1000×250mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '800×1000×250 mm' },
       { key: '材质', value: '201不锈钢' },
@@ -926,7 +926,7 @@ const products = [
     id: 'bxhn-001', categoryId: 'hu-wai-bx',
     name: '不锈钢户外/户内箱 300×250×160',
     model: '300×250×160mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '300×250×160 mm' },
       { key: '材质', value: '201不锈钢 / 304不锈钢 可选' },
@@ -940,7 +940,7 @@ const products = [
     id: 'bxhn-002', categoryId: 'hu-wai-bx',
     name: '不锈钢户外/户内箱 400×300×160',
     model: '400×300×160mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '400×300×160 mm' },
       { key: '材质', value: '201不锈钢 / 304不锈钢 可选' },
@@ -954,7 +954,7 @@ const products = [
     id: 'bxhn-003', categoryId: 'hu-wai-bx',
     name: '不锈钢户外/户内箱 500×400×180',
     model: '500×400×180mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '500×400×180 mm' },
       { key: '材质', value: '201不锈钢 / 304不锈钢 可选' },
@@ -968,7 +968,7 @@ const products = [
     id: 'bxhn-004', categoryId: 'hu-wai-bx',
     name: '不锈钢户外/户内箱 600×500×180',
     model: '600×500×180mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '600×500×180 mm' },
       { key: '材质', value: '201不锈钢 / 304不锈钢 可选' },
@@ -982,7 +982,7 @@ const products = [
     id: 'bxhn-005', categoryId: 'hu-wai-bx',
     name: '不锈钢户外箱 700×500×200',
     model: '700×500×200mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '700×500×200 mm' },
       { key: '材质', value: '201不锈钢' },
@@ -995,7 +995,7 @@ const products = [
     id: 'bxhn-006', categoryId: 'hu-wai-bx',
     name: '不锈钢户外/户内箱 800×600×200',
     model: '800×600×200mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '800×600×200 mm' },
       { key: '材质', value: '201不锈钢 / 304不锈钢 可选' },
@@ -1008,7 +1008,7 @@ const products = [
     id: 'bxhn-007', categoryId: 'hu-wai-bx',
     name: '不锈钢户外箱 800×600×250',
     model: '800×600×250mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '800×600×250 mm' },
       { key: '材质', value: '201不锈钢' },
@@ -1021,7 +1021,7 @@ const products = [
     id: 'bxhn-008', categoryId: 'hu-wai-bx',
     name: '不锈钢户外/户内箱 1000×800×200',
     model: '1000×800×200mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '1000×800×200 mm' },
       { key: '材质', value: '201不锈钢 / 304不锈钢 可选' },
@@ -1034,7 +1034,7 @@ const products = [
     id: 'bxhn-009', categoryId: 'hu-wai-bx',
     name: '不锈钢户外箱 1000×800×250',
     model: '1000×800×250mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '1000×800×250 mm' },
       { key: '材质', value: '201不锈钢' },
@@ -1047,7 +1047,7 @@ const products = [
     id: 'bxhn-010', categoryId: 'hu-wai-bx',
     name: '不锈钢户外箱 1000×600×350 (含小内门)',
     model: '1000×600×350mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '1000×600×350 mm' },
       { key: '材质', value: '201不锈钢' },
@@ -1061,7 +1061,7 @@ const products = [
     id: 'bxhn-011', categoryId: 'hu-wai-bx',
     name: '不锈钢户外箱 1200×600×350 (含小内门)',
     model: '1200×600×350mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '1200×600×350 mm' },
       { key: '材质', value: '201不锈钢 / 304不锈钢 可选' },
@@ -1075,7 +1075,7 @@ const products = [
     id: 'bxhn-012', categoryId: 'hu-wai-bx',
     name: '不锈钢户外箱 1500×700×370 (含小内门)',
     model: '1500×700×370mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '1500×700×370 mm' },
       { key: '材质', value: '201不锈钢' },
@@ -1088,7 +1088,7 @@ const products = [
     id: 'bxhn-013', categoryId: 'hu-wai-bx',
     name: '不锈钢户外箱 1700×700×370 (含小内门)',
     model: '1700×700×370mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '1700×700×370 mm' },
       { key: '材质', value: '201不锈钢' },
@@ -1101,7 +1101,7 @@ const products = [
     id: 'bxhn-014', categoryId: 'hu-wai-bx',
     name: '不锈钢户外箱 1800×800×400 (含小内门)',
     model: '1800×800×400mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '1800×800×400 mm' },
       { key: '材质', value: '201不锈钢' },
@@ -1114,7 +1114,7 @@ const products = [
     id: 'bxhn-015', categoryId: 'hu-wai-bx',
     name: '不锈钢内外门箱 300×400×250',
     model: '300×400×250mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '300×400×250 mm' },
       { key: '材质', value: '201不锈钢' },
@@ -1128,7 +1128,7 @@ const products = [
     id: 'bxhn-016', categoryId: 'hu-wai-bx',
     name: '不锈钢内外门箱 400×500×250',
     model: '400×500×250mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '400×500×250 mm' },
       { key: '材质', value: '201不锈钢' },
@@ -1142,7 +1142,7 @@ const products = [
     id: 'bxhn-017', categoryId: 'hu-wai-bx',
     name: '不锈钢内外门箱 500×600×250',
     model: '500×600×250mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '500×600×250 mm' },
       { key: '材质', value: '201不锈钢' },
@@ -1156,7 +1156,7 @@ const products = [
     id: 'bxhn-018', categoryId: 'hu-wai-bx',
     name: '不锈钢内外门箱 600×800×250',
     model: '600×800×250mm',
-    images: ['/images/hu-wai-bx/1.png', '/images/hu-wai-bx/2.png'],
+    images: ['/images/hu-wai-bx/1.jpg', '/images/hu-wai-bx/2.jpg'],
     specs: [
       { key: '规格尺寸', value: '600×800×250 mm' },
       { key: '材质', value: '201不锈钢' },

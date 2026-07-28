@@ -1,131 +1,159 @@
 /* =========================================================
-   全局视觉系统
-   主蓝 #1565C0  辅蓝 #1976D2  深蓝 #0D47A1
-   背景 #F7F8FA  卡片白 #FFFFFF  边线 #ECEFF4
-   主文 #1A2233  次文 #5B6B7E  弱文 #97A3B4  极弱 #C9D1DC
+   全局视觉系统 · 苹果式浅色极简（v4）
+   ----------------------------------------------------------
+   背景    #F5F5F7   卡片 #FFFFFF
+   主文    #1D1D1F   次文 #6E6E73   弱文 #86868B   极弱 #AEAEB2
+   点缀蓝  #1565C0（品牌蓝，仅用于按钮/链接/选中态）
+   反差黑  #1D1D1F（深色卡片/强 CTA）
+   圆角    卡片 32rpx   按钮 980rpx（胶囊）  小件 20rpx
+   分隔    hairline rgba(0,0,0,0.06)，不用重阴影
+   动效    标准 cubic-bezier(0.25,0.1,0.25,1)
+           弹性 cubic-bezier(0.34,1.56,0.64,1)
    ========================================================= */
 
 /* 页面全局 */
 page {
-  background-color: #F7F8FA;
-  font-family: -apple-system, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
-  color: #1A2233;
+  background-color: #F5F5F7;
+  font-family: -apple-system, "SF Pro Display", "PingFang SC", "Helvetica Neue", sans-serif;
+  color: #1D1D1F;
   font-size: 28rpx;
-  line-height: 1.6;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* 通用容器 */
+/* 通用容器（给悬浮 dock 预留空间） */
 .page-container {
   min-height: 100vh;
-  padding-bottom: 120rpx;
+  padding-bottom: calc(200rpx + env(safe-area-inset-bottom));
 }
 
-/* 卡片 */
+/* 卡片：白底大圆角，极轻阴影 + hairline 描边 */
 .card {
-  background: #fff;
-  border-radius: 20rpx;
-  padding: 32rpx;
-  margin: 20rpx 24rpx;
-  box-shadow: 0 4rpx 20rpx rgba(20, 50, 100, 0.06);
-  transition: transform .2s ease, box-shadow .2s ease;
+  background: #FFFFFF;
+  border-radius: 32rpx;
+  padding: 36rpx;
+  margin: 16rpx 32rpx;
+  border: 1rpx solid rgba(0, 0, 0, 0.03);
+  box-shadow: 0 2rpx 16rpx rgba(0, 0, 0, 0.04);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              opacity 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-/* 可点击卡片：按下反馈 */
+/* 可点击卡片：按下整体微缩（iOS 质感） */
+.card-tap {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              opacity 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
 .card-tap:active {
-  transform: translateY(2rpx);
-  box-shadow: 0 2rpx 10rpx rgba(20, 50, 100, 0.04);
+  transform: scale(0.975);
+  opacity: 0.92;
 }
 
-/* 分区标题（左侧蓝色短竖线装饰） */
+/* 编辑部式页头（各页共用） */
+.page-head {
+  padding: 28rpx 36rpx 4rpx;
+}
+.page-head-title {
+  font-size: 60rpx;
+  font-weight: 800;
+  color: #1D1D1F;
+  letter-spacing: -1.5rpx;
+  line-height: 1.2;
+}
+.page-head-sub {
+  font-size: 26rpx;
+  color: #86868B;
+  margin-top: 8rpx;
+}
+
+/* 分区标题：去装饰，纯大字重排版 */
 .section-title {
-  font-size: 34rpx;
+  font-size: 38rpx;
   font-weight: 700;
-  color: #1A2233;
-  padding: 28rpx 24rpx 16rpx;
-  letter-spacing: 1rpx;
-  display: flex;
-  align-items: center;
-}
-.section-title::before {
-  content: "";
-  display: inline-block;
-  width: 6rpx;
-  height: 28rpx;
-  background: linear-gradient(180deg, #1565C0, #1976D2);
-  border-radius: 4rpx;
-  margin-right: 14rpx;
+  color: #1D1D1F;
+  letter-spacing: -0.5rpx;
+  padding: 44rpx 36rpx 18rpx;
 }
 
-/* 主按钮（渐变 + 阴影 + 按下反馈） */
+/* 分区副标题（标题下方的灰色说明） */
+.section-caption {
+  font-size: 24rpx;
+  color: #86868B;
+  padding: 0 36rpx 18rpx;
+  margin-top: -10rpx;
+}
+
+/* 主按钮：纯色胶囊，无渐变无彩色阴影 */
 .btn-primary {
-  background: linear-gradient(135deg, #1565C0 0%, #1976D2 100%);
-  color: #fff;
-  border-radius: 48rpx;
-  height: 88rpx;
-  line-height: 88rpx;
+  background: #1565C0;
+  color: #FFFFFF;
+  border-radius: 980rpx;
+  height: 96rpx;
+  line-height: 96rpx;
   text-align: center;
   font-size: 32rpx;
   font-weight: 600;
+  letter-spacing: 1rpx;
   border: none;
-  box-shadow: 0 6rpx 16rpx rgba(21, 101, 192, 0.30);
-  transition: transform .15s ease, box-shadow .15s ease;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              opacity 0.2s ease;
 }
 .btn-primary::after { border: none; }
 .btn-primary:active {
-  transform: scale(0.98);
-  box-shadow: 0 2rpx 8rpx rgba(21, 101, 192, 0.30);
+  transform: scale(0.96);
+  opacity: 0.85;
 }
 
-/* 次要按钮 */
+/* 次要按钮：浅蓝着色填充（iOS tinted button），无描边 */
 .btn-secondary {
-  background: #fff;
+  background: rgba(21, 101, 192, 0.10);
   color: #1565C0;
-  border: 2rpx solid #1565C0;
-  border-radius: 48rpx;
-  height: 80rpx;
-  line-height: 80rpx;
+  border: none;
+  border-radius: 980rpx;
+  height: 88rpx;
+  line-height: 88rpx;
   text-align: center;
-  font-size: 28rpx;
-  font-weight: 500;
-  transition: transform .15s ease, background .15s ease;
+  font-size: 30rpx;
+  font-weight: 600;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background 0.2s ease;
 }
 .btn-secondary::after { border: none; }
 .btn-secondary:active {
-  background: #F0F4FA;
-  transform: scale(0.98);
+  background: rgba(21, 101, 192, 0.18);
+  transform: scale(0.96);
 }
 
-/* 标签（胶囊） */
+/* 标签（中性灰胶囊，克制不抢戏） */
 .tag {
   display: inline-block;
-  background: #E8F2FE;
-  color: #1565C0;
-  border-radius: 999rpx;
-  padding: 6rpx 18rpx;
+  background: rgba(0, 0, 0, 0.045);
+  color: #6E6E73;
+  border-radius: 980rpx;
+  padding: 8rpx 20rpx;
   font-size: 22rpx;
   font-weight: 500;
-  margin: 4rpx 6rpx 4rpx 0;
+  margin: 4rpx 8rpx 4rpx 0;
 }
 
 /* 规格表 */
 .spec-table { width: 100%; }
 .spec-row {
   display: flex;
-  border-bottom: 1rpx solid #F0F4FA;
-  padding: 22rpx 0;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.06);
+  padding: 24rpx 0;
 }
 .spec-row:last-child { border-bottom: none; }
 .spec-key {
   width: 220rpx;
-  color: #5B6B7E;
+  color: #86868B;
   font-size: 26rpx;
   flex-shrink: 0;
 }
 .spec-value {
   flex: 1;
-  color: #1A2233;
+  color: #1D1D1F;
   font-size: 26rpx;
   font-weight: 500;
 }
@@ -136,36 +164,63 @@ page {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 120rpx 40rpx;
-  color: #97A3B4;
+  padding: 140rpx 40rpx;
+  color: #AEAEB2;
 }
-.empty-icon { font-size: 96rpx; margin-bottom: 24rpx; opacity: 0.85; }
-.empty-text { font-size: 28rpx; }
+.empty-icon {
+  font-size: 88rpx;
+  margin-bottom: 28rpx;
+  opacity: 0.6;
+  filter: grayscale(1);
+}
+.empty-text { font-size: 28rpx; color: #86868B; }
+.empty-sub  { font-size: 24rpx; color: #AEAEB2; margin-top: 10rpx; }
 
-/* 推荐徽章 */
+/* 推荐徽章（苹果橙，纯色） */
 .badge-recommended {
-  background: linear-gradient(135deg, #FF8A00, #FF6F00);
+  background: #FF9500;
   color: #fff;
   font-size: 20rpx;
   padding: 4rpx 14rpx;
-  border-radius: 999rpx;
+  border-radius: 980rpx;
   margin-left: 12rpx;
   vertical-align: middle;
+  font-weight: 600;
+}
+
+/* 分割线（hairline） */
+.divider {
+  height: 1rpx;
+  background: rgba(0, 0, 0, 0.06);
+  margin: 0 32rpx;
+}
+
+/* 强调文字：纯色品牌蓝（替代旧渐变文字） */
+.text-gradient {
+  color: #1565C0;
+  font-weight: 700;
+}
+
+/* 链接文字 */
+.text-link {
+  color: #1565C0;
   font-weight: 500;
 }
 
-/* 分割线 */
-.divider {
-  height: 1rpx;
-  background: #ECEFF4;
-  margin: 0 24rpx;
+/* =========================================================
+   入场动画系统：.reveal + .reveal-d1~d6 错峰延迟
+   用法：<view class="card reveal reveal-d2">
+   ========================================================= */
+@keyframes reveal-up {
+  0%   { opacity: 0; transform: translateY(32rpx); }
+  100% { opacity: 1; transform: translateY(0); }
 }
-
-/* 渐变文字（用于 CTA 强调） */
-.text-gradient {
-  background: linear-gradient(135deg, #1565C0, #1976D2);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-weight: 700;
+.reveal {
+  animation: reveal-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+.reveal-d1 { animation-delay: 0.07s; }
+.reveal-d2 { animation-delay: 0.14s; }
+.reveal-d3 { animation-delay: 0.21s; }
+.reveal-d4 { animation-delay: 0.28s; }
+.reveal-d5 { animation-delay: 0.35s; }
+.reveal-d6 { animation-delay: 0.42s; }

@@ -1,4 +1,5 @@
 const api = require('../../utils/api');
+const share = require('../../utils/share');
 
 Page({
   data: {
@@ -8,6 +9,7 @@ Page({
   },
 
   onLoad(options) {
+    share.enableShareMenu();
     this.loadData(options.id);
   },
 
@@ -31,5 +33,13 @@ Page({
   goToDetail(e) {
     const id = e.currentTarget.dataset.id;
     wx.navigateTo({ url: `/pages/detail/detail?id=${id}` });
+  },
+
+  onShareAppMessage() {
+    return share.buildCategoryShare(this.data.category);
+  },
+
+  onShareTimeline() {
+    return share.buildCategoryTimeline(this.data.category);
   },
 });

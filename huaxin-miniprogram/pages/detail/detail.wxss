@@ -1,157 +1,184 @@
 /* =========================================================
-   产品详情页样式
+   产品详情页 · 径向光展台 + 玻璃信息卡 + 双按钮操作栏
    ========================================================= */
-.page-container { padding-bottom: 160rpx; }
+.page-container { padding-bottom: calc(220rpx + env(safe-area-inset-bottom)); }
 
-/* 产品图片轮播 */
+/* 产品展台：径向光打底，透明底产品图像在影棚中 */
 .img-swiper {
   width: 100%;
-  height: 560rpx;
-  background: linear-gradient(180deg, #F0F4FA 0%, #E8F2FE 100%);
+  height: 600rpx;
+  background: radial-gradient(85% 70% at 50% 42%, #FFFFFF 0%, #F2F2F4 70%, #ECECEF 100%);
 }
 .swiper-img {
   width: 100%;
-  height: 560rpx;
+  height: 540rpx;
+  margin-top: 20rpx;
+  filter: drop-shadow(0 24rpx 36rpx rgba(0, 0, 0, 0.14));
 }
 
-/* 无图占位（渐变背景 + 大字水印） */
+/* 无图占位 */
 .product-hero {
-  position: relative;
   width: 100%;
   height: 480rpx;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-}
-.product-hero::before,
-.product-hero::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.45);
-}
-.product-hero::before {
-  width: 280rpx;
-  height: 280rpx;
-  top: -80rpx;
-  left: -80rpx;
-}
-.product-hero::after {
-  width: 220rpx;
-  height: 220rpx;
-  bottom: -60rpx;
-  right: -60rpx;
+  background: radial-gradient(85% 70% at 50% 42%, #FFFFFF 0%, #F2F2F4 100%);
 }
 .hero-icon {
   font-size: 140rpx;
-  font-weight: 800;
-  opacity: 0.55;
-  z-index: 1;
-  text-shadow: 0 4rpx 12rpx rgba(0,0,0,0.06);
+  font-weight: 700;
+  color: #D1D1D6;
 }
 
-/* 基本信息卡 */
-.info-card { margin: 16rpx 24rpx; }
+/* 基本信息卡：毛玻璃，上浮叠压展台 */
+.info-card {
+  position: relative;
+  z-index: 2;
+  margin: -64rpx 32rpx 16rpx;
+  padding: 40rpx;
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(40rpx);
+  -webkit-backdrop-filter: blur(40rpx);
+  border-radius: 36rpx;
+  border: 1rpx solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 16rpx 48rpx rgba(0, 0, 0, 0.08);
+}
 .product-title {
-  font-size: 36rpx;
+  font-size: 44rpx;
   font-weight: 800;
-  color: #1A2233;
-  line-height: 1.4;
-  margin-bottom: 18rpx;
-  letter-spacing: 0.5rpx;
+  color: #1D1D1F;
+  line-height: 1.25;
+  margin-bottom: 20rpx;
+  letter-spacing: -1rpx;
 }
 .product-model-row {
   display: flex;
   align-items: center;
   margin-bottom: 18rpx;
-  padding: 14rpx 18rpx;
-  background: #F0F4FA;
-  border-radius: 12rpx;
+  padding: 16rpx 20rpx;
+  background: rgba(0, 0, 0, 0.035);
+  border-radius: 16rpx;
 }
 .product-model-label {
   font-size: 24rpx;
-  color: #5B6B7E;
+  color: #86868B;
   flex-shrink: 0;
-  margin-right: 8rpx;
+  margin-right: 16rpx;
 }
 .product-model-value {
   font-size: 26rpx;
-  color: #1A2233;
+  color: #1D1D1F;
   font-weight: 600;
 }
 .tags-row { display: flex; flex-wrap: wrap; }
 
-/* 规格参数（奇偶斑马纹） */
+/* 规格参数 */
 .specs-card {
-  margin: 0 24rpx;
+  margin: 0 32rpx;
   padding: 12rpx 0;
 }
 .spec-row {
   display: flex;
-  padding: 22rpx 32rpx;
-  border-bottom: 1rpx solid #F0F4FA;
-}
-.spec-row:nth-child(even) {
-  background: #FAFBFD;
+  padding: 24rpx 36rpx;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.05);
 }
 .spec-row:last-child { border-bottom: none; }
 .spec-key {
   width: 200rpx;
   font-size: 26rpx;
-  color: #5B6B7E;
+  color: #86868B;
   flex-shrink: 0;
 }
 .spec-value {
   flex: 1;
   font-size: 26rpx;
-  color: #1A2233;
+  color: #1D1D1F;
   line-height: 1.5;
   font-weight: 500;
 }
 
+/* 非标定制入口行（深色反差卡） */
+.custom-row {
+  display: flex;
+  align-items: center;
+  background: #1D1D1F;
+  border-radius: 32rpx;
+  margin: 24rpx 32rpx 0;
+  padding: 32rpx 36rpx;
+}
+.custom-row-text { flex: 1; }
+.custom-row-title {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.3rpx;
+  margin-bottom: 6rpx;
+}
+.custom-row-sub {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.55);
+}
+.custom-row-btn {
+  background: #1565C0;
+  color: #FFFFFF;
+  font-size: 26rpx;
+  font-weight: 600;
+  padding: 16rpx 34rpx;
+  border-radius: 980rpx;
+  flex-shrink: 0;
+}
+
 /* 说明条 */
 .note-bar {
-  padding: 22rpx 28rpx;
-  background: linear-gradient(135deg, #FFF8E1 0%, #FFFDE7 100%);
-  margin: 20rpx 24rpx;
-  border-radius: 16rpx;
-  border-left: 6rpx solid #FFB300;
+  padding: 22rpx 36rpx;
+  margin: 12rpx 32rpx;
 }
-.note-text { font-size: 22rpx; color: #B26A00; line-height: 1.7; }
+.note-text { font-size: 22rpx; color: #AEAEB2; line-height: 1.7; }
 
-/* 底部操作栏（"立即询价"整行渐变 + 大阴影） */
+/* 底部操作栏：圆形电话 + 主胶囊 */
 .action-bar {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 18rpx 24rpx 28rpx;
-  background: rgba(255,255,255,0.96);
-  backdrop-filter: blur(12rpx);
-  border-top: 1rpx solid #ECEFF4;
+  padding: 20rpx 32rpx calc(24rpx + env(safe-area-inset-bottom));
+  background: rgba(245, 245, 247, 0.82);
+  backdrop-filter: blur(40rpx);
+  -webkit-backdrop-filter: blur(40rpx);
+  border-top: 1rpx solid rgba(0, 0, 0, 0.05);
   display: flex;
   align-items: center;
-  box-shadow: 0 -6rpx 24rpx rgba(20, 50, 100, 0.06);
+  gap: 20rpx;
 }
+.btn-call {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  background: rgba(21, 101, 192, 0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s ease;
+}
+.btn-call:active { transform: scale(0.92); background: rgba(21, 101, 192, 0.18); }
+.btn-call-icon { font-size: 40rpx; color: #1565C0; }
 .btn-inquiry {
   flex: 1;
-  height: 92rpx;
-  background: linear-gradient(135deg, #1565C0 0%, #1976D2 100%);
-  color: #fff;
-  border-radius: 999rpx;
+  height: 96rpx;
+  background: #1565C0;
+  color: #FFFFFF;
+  border-radius: 980rpx;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 32rpx;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 2rpx;
-  box-shadow: 0 6rpx 18rpx rgba(21, 101, 192, 0.35);
-  transition: transform .15s ease, box-shadow .15s ease;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
 }
 .btn-inquiry:active {
-  transform: scale(0.98);
-  box-shadow: 0 3rpx 10rpx rgba(21, 101, 192, 0.30);
+  transform: scale(0.96);
+  opacity: 0.85;
 }
-.inquiry-phone-icon { font-size: 32rpx; margin-right: 10rpx; }

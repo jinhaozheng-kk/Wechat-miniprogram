@@ -8,12 +8,12 @@
     "es6": true,
     "enhance": true,
     "postcss": true,
-    "minified": false,
+    "minified": true,
     "urlCheck": false,
     "checkSiteMap": false,
     "compileWorklet": false,
     "uglifyFileName": false,
-    "uploadWithSourceMap": true,
+    "uploadWithSourceMap": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
     "minifyWXSS": true,
@@ -33,7 +33,11 @@
   "condition": {},
   "simulatorPluginLibVersion": {},
   "packOptions": {
-    "ignore": [],
+    "ignore": [
+      { "type": "folder", "value": "产品" },
+      { "type": "folder", "value": ".claude" },
+      { "type": "file", "value": "CLAUDE.md" }
+    ],
     "include": []
   },
   "editorSetting": {}

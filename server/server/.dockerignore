@@ -1,0 +1,11 @@
+target/*
+!target/server-0.0.1-SNAPSHOT.jar
+.mvn/
+mvnw
+mvnw.cmd
+.idea/
+.settings/
+.classpath
+.project
+*.iml
+HELP.md

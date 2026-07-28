@@ -1,25 +1,42 @@
 <view class="page-container">
 
   <!-- 公司头部 -->
-  <view class="company-header">
+  <view class="company-header reveal">
     <view class="company-logo-wrap">
       <text class="company-logo-text">华信</text>
     </view>
     <view class="company-name">{{company.name}}</view>
     <view class="company-slogan">{{company.slogan}}</view>
-    <view class="company-header-bottom"></view>
+  </view>
+
+  <!-- 数据带：工厂实力一眼看 -->
+  <view class="stat-band reveal reveal-d1">
+    <view class="stat-item">
+      <view class="stat-num">14</view>
+      <view class="stat-label">产品系列</view>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <view class="stat-num">非标</view>
+      <view class="stat-label">来图定制</view>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <view class="stat-num">1天</view>
+      <view class="stat-label">报价响应</view>
+    </view>
   </view>
 
   <!-- 公司简介 -->
-  <view class="section-title">公司简介</view>
-  <view class="intro-card card">
+  <view class="section-title reveal reveal-d2">公司简介</view>
+  <view class="intro-card card reveal reveal-d2">
     <text class="intro-text">{{company.intro}}</text>
   </view>
 
   <!-- 核心优势 -->
-  <view class="section-title">核心优势</view>
+  <view class="section-title reveal reveal-d3">核心优势</view>
   <view class="advantages-grid">
-    <view wx:for="{{advantages}}" wx:key="title" class="adv-item card">
+    <view wx:for="{{advantages}}" wx:key="title" class="adv-item card reveal reveal-d4">
       <view class="adv-icon">{{item.icon}}</view>
       <text class="adv-title">{{item.title}}</text>
       <text class="adv-desc">{{item.desc}}</text>

@@ -1,4 +1,6 @@
 {
-  "navigationBarTitleText": "华信通讯",
+  "navigationStyle": "custom",
+  "backgroundColorTop": "#0B0B0E",
+  "backgroundColorBottom": "#F5F5F7",
   "usingComponents": {}
 }

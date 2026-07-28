@@ -4,8 +4,8 @@
   <block wx:if="{{submitted}}">
     <view class="success-box">
       <view class="success-icon">✓</view>
-      <view class="success-title">询价提交成功</view>
-      <view class="success-sub">销售将在 1 个工作日内联系您</view>
+      <view class="success-title">{{isCustom ? '定制需求已提交' : '询价提交成功'}}</view>
+      <view class="success-sub">{{isCustom ? '销售将在 1 个工作日内联系您对接图纸与报价' : '销售将在 1 个工作日内联系您'}}</view>
       <view class="success-actions">
         <button class="btn-primary success-btn" bindtap="backHome">返回首页</button>
         <button class="btn-secondary success-btn" bindtap="submitAnother">再提交一单</button>
@@ -16,9 +16,21 @@
   <!-- 表单视图 -->
   <block wx:else>
 
-    <!-- 询价产品 -->
-    <view class="section-title">询价产品</view>
-    <view class="card products-card">
+    <!-- 编辑部式页头 -->
+    <view class="page-head reveal">
+      <view class="page-head-title">{{isCustom ? '非标定制' : '询价'}}</view>
+      <view class="page-head-sub">{{isCustom ? '填写参数，销售对接图纸与报价' : '1 个工作日内回复出厂价'}}</view>
+    </view>
+
+    <!-- 非标定制模式提示行 -->
+    <view wx:if="{{isCustom}}" class="custom-hint reveal reveal-d1">
+      <text class="custom-hint-text">来图来样 · 尺寸 / 材质 / 工艺均可定</text>
+      <text class="custom-hint-exit" bindtap="exitCustomMode">普通询价 ›</text>
+    </view>
+
+    <!-- 询价产品（定制模式下隐藏，不强制选品） -->
+    <view wx:if="{{!isCustom}}" class="section-title">询价产品</view>
+    <view wx:if="{{!isCustom}}" class="card products-card">
       <block wx:if="{{products.length > 0}}">
         <view wx:for="{{products}}" wx:key="id" class="product-row">
           <view class="product-index">{{index + 1}}</view>
@@ -90,13 +102,14 @@
     </view>
 
     <!-- 需求与备注 -->
-    <view class="section-title">需求描述</view>
+    <view class="section-title">{{isCustom ? '定制需求' : '需求描述'}}</view>
+    <view wx:if="{{isCustom}}" class="section-caption">已为您预填模板，请补全各项参数</view>
     <view class="card form-card">
       <view class="form-row form-row-block">
-        <view class="form-label"><text class="required">*</text>需求</view>
+        <view class="form-label"><text class="required">*</text>{{isCustom ? '定制参数' : '需求'}}</view>
         <textarea
-          class="form-textarea"
-          placeholder="请填写需要的数量、规格等"
+          class="form-textarea {{isCustom ? 'form-textarea-tall' : ''}}"
+          placeholder="请填写数量、规格；非标定制请注明尺寸、材质、开孔等"
           maxlength="500"
           value="{{form.requirement}}"
           data-field="requirement"
@@ -121,6 +134,7 @@
     <!-- 提示 -->
     <view class="note-card card">
       <view class="note-title">温馨提示</view>
+      <view class="note-item">· 接受各类非标箱定制：请在需求中写明尺寸、材质、厚度、开孔等，可来图来样</view>
       <view class="note-item">· 报价均为出厂价，不含税、不含发票、不含运费</view>
       <view class="note-item">· 如需开票或含运费报价，请在备注中说明</view>
       <view class="note-item">· 急单也可直接致电 {{company.phone}}</view>
@@ -133,7 +147,7 @@
         bindtap="onSubmit"
         loading="{{submitting}}"
         disabled="{{submitting}}"
-      >提交询价</button>
+      >{{isCustom ? '提交定制需求' : '提交询价'}}</button>
       <view class="call-link" bindtap="callPhone">
         <text class="call-icon">☎</text>
         <text>直接拨打 {{company.phone}}</text>
